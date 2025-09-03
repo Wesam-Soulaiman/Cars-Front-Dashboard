@@ -1,0 +1,637 @@
+{
+  "error": {
+    "404": {
+      "title": "Oops, you're out of the showroom",
+      "action": "Go to the showroom"
+    }
+  },
+  "permissions": {
+    "stores.view": "View Stores",
+    "stores.create": "Create Stores",
+    "stores.update": "Update Stores",
+    "stores.delete": "Delete Stores",
+    "brands.view": "View Brands",
+    "brands.create": "Create Brands",
+    "brands.update": "Update Brands",
+    "brands.delete": "Delete Brands",
+    "models.view": "View Models",
+    "models.create": "Create Models",
+    "models.update": "Update Models",
+    "models.delete": "Delete Models",
+    "products.view": "View Products",
+    "products.create": "Create Products",
+    "products.update": "Update Products",
+    "products.delete": "Delete Products",
+    "offers.view": "View Offers",
+    "offers.create": "Create Offers",
+    "offers.update": "Update Offers",
+    "offers.delete": "Delete Offers",
+    "services.view": "View Services",
+    "services.create": "Create Services",
+    "services.update": "Update Services",
+    "services.delete": "Delete Services",
+    "services.categories.view": "View Service Categories",
+    "orders.view": "View Orders",
+    "orders.create": "Create Orders",
+    "orders.update": "Update Orders",
+    "orders.delete": "Delete Orders",
+    "roles.view": "View Roles",
+    "roles.create": "Create Roles",
+    "roles.update": "Update Roles",
+    "roles.delete": "Delete Roles",
+    "employees.view": "View Employees",
+    "employees.create": "Create Employees",
+    "employees.update": "Update Employees",
+    "employees.delete": "Delete Employees",
+    "banners.view": "View Banners",
+    "banners.create": "Create Banners",
+    "banners.update": "Update Banners",
+    "banners.delete": "Delete Banners",
+    "FAQ.view": "View FAQ",
+    "FAQ.create": "Create FAQ",
+    "FAQ.update": "Update FAQ",
+    "FAQ.delete": "Delete FAQ",
+    "dashboard.access": "Access Dashboard"
+  },
+  "showroomProfile": {
+    "update": "Update Showroom",
+    "packages":"Packages",
+    "cars":"Cars"
+  },
+  "createCar": {
+    "create":"Create Car"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "brands" : "Brands & Models Managment",
+    "showrooms" : "Showrooms Managment",
+    "employees" : "Employees Managment",
+    "cars" : "Cars Managment",
+    "brand_man" : "Brands Managment",
+    "model_man" : "Models Managment",
+    "showroom_man" : "Showrooms Managment",
+    "employee_man" : "Employees Managment",
+    "cars_man" : "Cars Managment",
+    "offers_man" : "Offers Management",
+    "offer" : "Offers",
+    "offer_create" : "Create Offer",
+    "brand": "Brands",
+    "brand_create": "Create Brand",
+    "model": "Models",
+    "model_create": "Create Model",
+    "showroom": "Showrooms",
+    "employee": "Employees",
+    "showroom_create": "Create Showroom",
+    "employee_create": "Create Employee",
+    "car": "Cars",
+    "car_create": "Create Car",
+    "role": "roles and permisions",
+    "users": "Users",
+    "all_users": "All Users",
+    "fin_man": "Finance Management",
+    "packages": "Packages",
+    "sub_man": "Subscription Management",
+    "fit_sub": "Fitness Subscriptions",
+    "food_sub": "Food Subscriptions",
+    "meals_man": "Meals Management",
+    "meals": "Meals",
+    "meal_plans": "Meal Plans",
+    "meal_types": "Meal Types",
+    "meal_ingred": "Inventory Management",
+    "delivery_times": "Delivery Times",
+    "week_man": "Week Management",
+    "chat": "Chat",
+    "workout_man": "Workout Management",
+    "exercises": "Exercises",
+    "all_ex": "All Exercises",
+    "create_ex": "Create Exercise",
+    "workouts": "Workouts",
+    "create_workout": "Create Workout",
+    "banner": "Banner",
+    "banners": "Banners",
+    "public": "Public",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "faq": "FAQ",
+    "sports": "Sports",
+    "user_req": "User Requests",
+    "workout_req": "Workout Requests",
+    "group_workout": "Group Workout",
+    "orders": "Orders"
+  },
+  "brands": {
+    "form": {
+      "name": "Brand name",
+      "image": "Upload Brand Image",
+      "update": "Update Image"
+    }
+  },
+  "roles": {
+    "form": {
+      "name": "Role name"
+    }},
+  "createShowroom": {
+    "title": "Create New Showroom"
+  },
+  "createEmployee": {
+    "title": "Create New Employee"
+  },
+  "createBrand": {
+    "title": "Create New Brand"
+  },
+  "createModel": {
+    "title": "Create New Model"
+  },
+  "models": {
+    "form": {
+      "name": "Model name",
+      "brand": "Brand",
+      "selectBrand": "Select brand"
+    }
+  },
+  "addShowroom": {
+    "name":"Name",
+    "name_ar":"Arabic Name",
+    "email":"Email Address",
+    "address":"Address",
+    "address_ar": "Arabic Address",
+    "password":"Password",
+    "password_confirmation": "Confirm Password",
+    "phone":"Phone Number",
+    "whatsapp_phone":"WhatsApp Number",
+    "create":"Create Showroom",
+    "image": "Upload Logo",
+    "update": "Update Showroom"
+  },
+  "delete_pop": {
+    "title": "Confirm Deletion of {{slug}}",
+    "desc": "Are you sure you want to delete this item? This action cannot be undone. Please confirm if you wish to proceed with removing the {{slug}}.",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "tooltip": "Delete"
+  },
+  "edit_pop": {
+    "title": "Edit {{slug}}",
+    "tooltip": "Edit"
+  },
+  "slugs": {
+    "faq": "FAQ",
+    "brand": "Brand",
+    "model":"Model",
+    "showroom":"Showroom",
+    "role": "role",
+    "deliveryTime": "Delivery Time",
+    "exc": "Exercise",
+    "target_mus": "Target Muscles",
+    "survey": "Survey",
+    "ingredient": "Ingredient",
+    "meal_plan": "Meal Plan",
+    "meal_type": "Meal Type",
+    "banner": "Banner",
+    "package": "Package",
+    "price": "Price",
+    "days": "Days",
+    "question": "Question",
+    "answer": "Answer",
+    "title": "Title",
+    "packageName": "Package Name",
+    "packageDesc": "Package Description",
+    "name": "Name",
+    "description": "Description"
+  },
+  "table": {
+    "id": "ID",
+    "name": "Name",
+    "name_ar": "Arabic Name",
+    "address": "Address",
+    "brand": "Brand",
+    "carsNumber": "Number Of Cars",
+    "whatsapp_phone" : "WhatsApp",
+    "description": "Description",
+    "actions": "Actions",
+    "createdAt": "Created At",
+    "image": "Image",
+    "title": "Title",
+    "role": "Role",
+    "phone": "Phone",
+    "reps": "Reps",
+    "weight": "Weight",
+    "rank": "Rank",
+    "email": "Email",
+    "exportCSV": "Export to CSV",
+    "price": "Price",
+    "numberOfDays": "Number Of Days",
+    "question": "Question",
+    "choices": "Choices",
+    "username": "Username",
+    "packageName": "Package Name",
+    "priceName": "Price",
+    "type": "Type",
+    "groupCoaching": "Group Coaching",
+    "personCoaching": "Personalized Coaching",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "status": "Status",
+    "active": "Active",
+    "notActive": "Not Active",
+    "mealTitle": "Meal Title",
+    "subType": "Subscription Type",
+    "unit": "Unit",
+    "stock": "Stock",
+    "updateStock": "Update quantity in stock"
+  },
+  "login": {
+    "welcome": "Welcome back!",
+    "title": "Sign In",
+    "form": {
+      "email": "Email Address",
+      "password": "Password",
+      "btn": "Sign In"
+    }
+  },
+  "authContext": {
+    "waiting": "Waiting...",
+    "desc": "We are preparing your profile, please wait a moment."
+  },
+  
+
+  "pricingForm": {
+    "price": "Price",
+    "title": "Title",
+    "numberOfDays": "Number Of Days"
+  },
+
+  
+  "profile": {
+    "my": "My Profile",
+    "logout": "Logout"
+  },
+  "editor": {
+    "placeholder": "Start typing here..."
+  },
+  "gbtn": {
+    "save": "Save",
+    "create": "Create",
+    "update": "Update",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "remove": "Remove",
+    "manage": "Manage",
+    "edit": "Edit",
+    "deleting": "Deleting"
+  },
+  "click-tw": "click again to confirm action",
+  "global": {
+    "loading": "Loading",
+    "more": "More",
+    "group": "Group",
+    "person": "Personalized",
+    "personalized": "Personalized"
+  },
+  
+  
+  "faqForm": {
+    "ques": "Question",
+    "ans": "Answer"
+  },
+  
+  "deliveryTime": {
+    "title": "Delivery Time",
+    "form": {
+      "title": "Delivery Time"
+    }
+  },
+  "home": {
+    "active_fit_sub": "Active Fitness Subscriptions",
+    "active_meal_sub": "Active Meal Subscriptions",
+    "new_sing": "New Sign-Ups",
+    "completion_rate": "Workout Completion Rate"
+  },
+  "notification": {
+    "title": "Notification Title",
+    "body": "Notification Body",
+    "send": "Send Notification",
+    "send_act": "Send Notification"
+  },
+  "all_users": {
+    "create_user": "Create new user"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female"
+  },
+  "userProfile": {
+    "setup_required": "Profile setup required",
+    "title": "Client Information",
+    "name": "Name",
+    "height": "Height",
+    "email": "Email",
+    "phone": "Phone",
+    "gender": "Gender",
+    "goal": "Goal",
+    "age": "Age",
+    "sport": "Sport",
+    "dietary": "Dietary Preferences",
+    "trainingLocation": "Training Location",
+    "sportDuration": "Training Duration",
+    "activation": {
+      "activate": "Activate",
+      "deactivate": "Deactivate"
+    },
+    "fit_sub": {
+      "title": "Fitness Subscription",
+      "package": "Package",
+      "sub_pan": "Subscription Plan",
+      "price": "Price",
+      "subsc_at": "Subscribed at",
+      "experid_on": "Expired On",
+      "renew": "The player should renew after {{days_left}} days"
+    },
+    "meal_sub": {
+      "title": "Meal Subscription",
+      "sub_info": "Subscription Information",
+      "start": "Start",
+      "end": "End",
+      "address": "Address",
+      "city": "City",
+      "street": "Street",
+      "building": "Building",
+      "postal": "Postal code",
+      "deliveryTime": "Delivery Time",
+      "state": "State"
+    },
+    "meal_selection": {
+      "title": "Meal Selection",
+      "day": "Day"
+    },
+    "sur_ans": {
+      "title": "Survey Answer"
+    }
+  },
+  "progressHistory": {
+    "title": "Progress History",
+    "weight": "Weight Progress"
+  },
+  "mealCard": {
+    "calories": "Calories",
+    "protien": "Protein",
+    "carb": "Carbohydrates",
+    "fats": "Fats",
+    "fiber": "Fiber",
+    "types": "Types",
+    "ingredient": "Ingredient"
+  },
+  "workout_man": {
+    "add": "Add Workout",
+    "nodata": "No workout here yet"
+  },
+  "workoutCrad": {
+    "level": "Level",
+    "duration": "Expected Duration"
+  },
+  "createUser": {
+    "title": "Create new user"
+  },
+  "addUser": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone",
+    "role": "Role",
+    "admin": "Admin",
+    "coach": "Coach",
+    "kitchen": "Kitchen",
+    "create": "Create User"
+  },
+  "fitnessSubscriptions": {
+    "title": "Fitness Subscriptions analysis",
+    "renewal": "Fitness Subscriptions Renewal"
+  },
+  "foodSubscriptions": {
+    "title": "Food Subscriptions Analysis",
+    "renewal": "Food Subscriptions Renewal"
+  },
+  "loadingError": {
+    "title": "Error while loading data",
+    "refetch": "Refetch"
+  },
+  "createWorkout": {
+    "header": "create {{type}} workout {{slug}} in {{day}}",
+    "personSlug": "for user {{username}}",
+    "groupSlug": "for {{packageName}} package"
+  },
+  "workoutForm": {
+    "workout": "Workout",
+    "title": "Title",
+    "diff_level": "Difficulty Level",
+    "duration": "Duration",
+    "type": "Workout Type",
+    "message": "Motivational Message",
+    "desc": "Description",
+    "no_exc_sele": "No Exercises Selected",
+    "exce_sele": "{{count}} exercises selected to be in this workout",
+    "search": "Search"
+  },
+  "imagePicker": {
+    "title": "{{slug}} image",
+    "types": "available types: JPG, PNG, JPEG",
+    "pickFile": "Pick your file"
+  },
+  "vidPicker": {
+    "title": "{{slug}} Video",
+    "types": "available types: Mp4"
+  },
+  "excerciseCard": {
+    "duration": "Duration"
+  },
+  "workoutDetail": {
+    "main": "Main",
+    "settings": "Settings",
+    "level": "Level",
+    "duration": "Expected duration",
+    "craete_at": "Created at",
+    "workoutExcer": "Workout Exercise"
+  },
+  "deleteSec": {
+    "button": "Delete {{slug}}",
+    "warning": "Are you sure you want to delete this item? This action is irreversible and all associated data will be permanently lost. To proceed with the deletion, please click the delete button twice to confirm."
+  },
+  "nodata": "No {{slug}} here yet",
+  "createExc": {
+    "name": "Name",
+    "description": "Description",
+    "images": "Images",
+    "target_muscles_image": "Target muscles image",
+    "notes": "Notes",
+    "exc_vid": "Exercise Video",
+    "watting": "please wait , creating ... ",
+    "cooling_time": "Cooling Time"
+  },
+  "excDetail": {
+    "tabs": {
+      "main": "Main",
+      "settings": "Settings",
+      "leaderBoard": "Leader Board"
+    },
+    "detailPanel": {
+      "expectedDuration": "Expected Duration",
+      "exc_image": "Exercise Image",
+      "tar_mus_image": "Target Muscles Image"
+    }
+  },
+  "surveyForm": {
+    "title": "Survey Title"
+  },
+  "surveyDetail": {
+    "update": "Update Survey",
+    "question_sec": "Question Management"
+  },
+  
+  "mealForm": {
+    "name": "Meal Name",
+    "desc": "Meal Description",
+    "calories": "Meal Calories",
+    "protein": "Protein (g)",
+    "carb": "Carbohydrates (g)",
+    "fats": "Fats (g)",
+    "fiber": "Fiber (g)",
+    "types": "Meal Types",
+    "ingredients": "Meal Ingredients",
+    "manageQun": "Manage Quantity of ingredient"
+  },
+  "ingredientForm": {
+    "title": "Ingredient Title",
+    "stock": "Stock",
+    "unit": "Unit"
+  },
+  "mealPlans": {
+    "create": "Create Meal Plan"
+  },
+  "mealPlanCard": {
+    "sub_count": "Subscription Count",
+    "calories": "Calories",
+    "desc": "This plan includes"
+  },
+  "createMealPlan": {
+    "title": "Create New Meal Plan"
+  },
+  "mealPlanForm": {
+    "title": "Title",
+    "calories": "Calories",
+    "price": "Monthly Price",
+    "types": "Meal Types"
+  },
+  "updateMealPlan": {
+    "title": "Update Meal Plan"
+  },
+  "mealTypeForm": {
+    "title": "Title"
+  },
+  "days": {
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday"
+  },
+  "all": "All",
+  "create_pop": {
+    "title": "Create {{slug}}"
+  },
+  "dollar": "Dollar",
+  "packageForm": {
+    "name": "Package Name",
+    "desc": "Package Description",
+    "type": "Package Type"
+  },
+  "pricing": {
+    "title": "Pricing Management"
+  },
+  "survey": {
+    "title": "Survey Management"
+  },
+  
+  "mealOrderDetail": {
+    "order_status": "Order Status",
+    "listed": "Listed",
+    "pending": "Pending",
+    "done": "Done",
+    "orderDetail": "Order Detail",
+    "orderId": "Order ID",
+    "kcal": "kcal",
+    "monthly": "Month",
+    "orderDate": "Order Date",
+    "ingredientId": "ID",
+    "ingredientName": "Ingredient Name",
+    "required": "Required Quantity",
+    "available": "Available in stock",
+    "stockInsufficient": "Ahmad afif",
+    "orderStatus": "Order Status",
+    "customer": {
+      "title": "Customer Information",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "gender": "Gender",
+      "goal": "Goal",
+      "age": "Age",
+      "dietary": "Dietary Preferences"
+    },
+    "sub": {
+      "title": "Subscription",
+      "plan": "Plan",
+      "calories": "Plan Calories",
+      "price": "Price",
+      "startDate": "Start Date",
+      "endDate": "End Date"
+    },
+    "delivery": {
+      "title": "Delivery Information",
+      "address": "Address",
+      "notes": "Delivery Notes",
+      "time": "Delivery Time"
+    },
+    "meals": {
+      "title": "Meals"
+    }
+  },
+
+  
+  "addBanner": {
+    "button": "Craete Banner"
+  },
+  "createIngredient": {
+    "title": "Create new meal ingerdient"
+  },
+  "createQuestion": {
+    "button": "Create new question"
+  },
+  "questionForm": {
+    "question": "Question",
+    "type": "Question Type",
+    "normal": "Normal",
+    "choices": "Choices"
+  },
+  "createMeal": {
+    "title": "Create new meal"
+  },
+  "arf": "Arabic {{slug}}",
+  "unit": {
+    "kg": "Kg",
+    "g": "g",
+    "ml": "Ml",
+    "l": "L",
+    "lb": "Lb",
+    "tbsp": "Tbsp",
+    "tsp": "Tsp",
+    "pcs": "Pcs"
+  },
+  "addToStock": {
+    "new_qun": "New Quantity",
+    "title": "Update Stock Quantity",
+    "description": "This form allows you to update the stock quantity of a product. Enter the new quantity and click the save button to apply the changes. A tooltip is available for additional guidance."
+  }
+}

@@ -1,0 +1,843 @@
+{
+  "response": {
+    "wrong": "حدث خطأ ما",
+    "create": "تم الإنشاء بنجاح",
+    "update": "تم التعديل بنجاح",
+    "delete": "تم الحذف بنجاح",
+    "login": "تم تسجيل الدخول بنجاح"
+  },
+  "filter": {
+    "all":"الكل"
+  },
+  "dashboard": {
+    "overview": "نظرة عامة على لوحة التحكم",
+    "total_cars": "إجمالي السيارات",
+    "active_stores": "المتاجر النشطة",
+    "total_revenue": "إجمالي الإيرادات",
+    "total_stores": "إجمالي المعارض",
+    "total_subscription": "إجمالي الاشتراكات",
+    "total_offers": "إجمالي العروض",
+    "stores_growth": "نمو المتاجر",
+    "stores_count": "عدد المتاجر",
+    "product_status": "حالة المنتجات",
+    "active_products": "منتجات نشطة",
+    "inactive_products": "منتجات غير نشطة",
+    "services_usage": "استخدام الخدمات",
+    "store_status": "حالة المتاجر",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "active_offers": "العروض النشطة",
+    "subscribed_stores": "المتاجر المشتركة",
+    "total_employees": "إجمالي الموظفين",
+    "active_orders": "الطلبات النشطة",
+    "roles_distribution": "توزيع الأدوار",
+    "sub_distribution": "توزيع الاشتراكات",
+    "count": "العدد",
+    "last_12_months": "آخر 12 شهرًا",
+    "orders_revenue_trend": "اتجاه الطلبات والإيرادات",
+    "revenue": "الإيرادات",
+    "total": "الإجمالي",
+    "analysis": "تحليل البيانات",
+    "monthly_orders": "تحليل الاشتراكات الشهرية",
+    "monthly_stores": "تحليل المعارض الشهرية",
+    "monthly_cars": "تحليل السيارات الشهرية",
+    "orders": "عدد الطلبات",
+    "stores": "عدد المعارض",
+    "cars": "عدد السيارات"
+  },
+  "common": {
+    "currency": "دولار"
+  },
+  "forms": {
+    "car":"السيارة",
+    "info":"المعلومة",
+    "info_ar": "المعلومة بالعربي",
+    "final_price": "سعر العرض",
+    "endDate":"تاريخ الانتهاء",
+    "name": "الاسم",
+    "name_ar":"الاسم بالعربي",
+    "email": "البريد الإلكتروني",
+    "address": "العنوان",
+    "address_ar": "العنوان بالعربي",
+    "password": "كلمة المرور",
+    "password_confirmation": "تأكيد كلمة المرور",
+    "passwords_must_match": "كلمة المرور يجب أن تكون مطابقة",
+    "phone": "الهاتف",
+    "whatsapp_phone": "واتساب",
+    "description":"الوصف",
+    "description_ar": "الوصف بالعربي",
+    "category": "الفئة",
+    "selectCategories": "اختر الفئة",
+    "image": "رفع صورة {{types}}",
+    "imageUpdate": "تحديث صورة {{types}}",
+    "create": "إنشاء {{types}} جديد",
+    "update":"تحديث {{thetypes}}",
+    "selectBrand":"اختر الماركة",
+    "selectCar":"اختر السيارة",
+    "selectModel":"اختر الموديل",
+    "selectStructure": "اختر شكل الهيكل",
+    "selectdrive_type": "اختر نوع الدفع",
+    "selectfuel_type": "اختر نوع الوقود",
+    "selectseat_type": "اختر نوع المقاعد",
+    "selectlights": "اختر نوع الإضاءة",
+    "selectgears": "اختر نوع ناقل الحركة",
+    "selecttype": "اختر حالة السيارة",
+    "selectfeatures": "اختر مميزات السيارة",
+    "main_photo": "الصورة الرئيسية",
+    "additional_photos": "الصور الإضافية",
+    "only_images_accepted": "فقط الصور مقبولة",
+    "file_too_large": "الملف كبير حاول رفع صورة أخرى",
+    "brand":"الماركة",
+    "model":"الموديل",
+    "structure": "شكل الهيكل",
+    "drive_type": "نوع الدفع",
+    "fuel_type": "نوع الوقود ",
+    "seat_type": "نوع المقاعد",
+    "lights": "نوع الإضاءة",
+    "mileage": "عدد الكيلومترات",
+    "cylinder_capacity": "سعة الأسطوانة",
+    "cylinders": "اسطوانات",
+    "year_of_construction": "سنة الإنشاء",
+    "year_of_registration": "سنة التسجيل",
+    "number_of_seats": "عدد المقاعد",
+    "doors": "عدد الأبواب",
+    "gears": "نوع ناقل الحركة",
+    "color": "اللون",
+    "type": "حالة السيارة",
+    "features": "المميزات",
+    "showroom":"المعرض",
+    "selectShowroom": "اختر المعرض",
+    "package":"الباقة",
+    "selectPackage": "اختر الباقة",
+    "startDate":"تاريخ البدء",
+    "count_days":"عدد الأيام",
+    "price":"السعر",
+    "photo": "الصورة",
+    "role":"الدور",
+    "selectRole":"اختر الدور",
+    "question":"السؤال",
+    "answer":"الإجابة",
+    "question_ar":"السؤال بالعربي",
+    "answer_ar": "الإجابة بالعربي"
+  },
+  "types":{
+    "brand": "ماركة",
+    "feature": "معلومة",
+    "model":"موديل",
+    "car":"سيارة",
+    "role":"دور",
+    "employee":"موظف",
+    "offer":"عرض",
+    "showroom":"معرض",
+    "package":"باقة",
+    "subscription": "اشتراك",
+    "banner":"لافتة"
+  },
+  "category": {
+    "top result": "النتائج الأولى",
+    "subscription":"الاشتراك العادي"
+  },
+  "thetypes":{
+    "brand": "الماركة",
+    "feature": "المعلومة",
+    "model":"الموديل",
+    "car":"السيارة",
+    "role":"الدور",
+    "employee":"الموظف",
+    "offer":"العرض",
+    "showroom":"المعرض",
+    "package":"الباقة",
+    "subscription": "الاشتراك",
+    "faq":"السؤال",
+    "banner":"اللافتة",
+    "banner_ar":"اللافتة العربية"
+  },
+  "subscriptions": {
+    "title": "تحليل الاشتراكات"
+  },
+  "delete_pop": {
+    "title": "تأكيد حذف {{thetypes}}",
+    "desc": "هل أنت متأكد أنك تريد حذف هذا العنصر؟ هذا الإجراء لا يمكن التراجع عنه. يرجى التأكيد إذا كنت ترغب في متابعة حذف {{thetypes}}.",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "tooltip": "حذف"
+  },
+  "renewal_pop": {
+    "title": "تأكيد تجديد {{thetypes}}",
+    "desc": "هل أنت متأكد أنك تريد تجديد هذا الاشتراك؟",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "tooltip": "تجديد"
+  },
+  "activate_pop": {
+    "title": "تأكيد تفعيل الاشتراك",
+    "desc": "هل أنت متأكد أنك تريد تفعيل هذا الاشتراك؟",
+    "cancel": "إلغاء",
+    "confirm": "تفعيل",
+    "tooltip": "تفعيل"
+  },
+  "deactivate_pop": {
+    "title": "تأكيد إلغاء تفعيل الاشتراك",
+    "desc": "هل أنت متأكد أنك تريد إلغاء تفعيل هذا الاشتراك؟",
+    "cancel": "إلغاء",
+    "confirm": "إلغاء تفعيل",
+    "tooltip": "إلغاء تفعيل"
+  },
+  "edit_pop": {
+    "title": "تعديل {{thetypes}}",
+    "tooltip": "تعديل"
+  },
+  "create_pop": {
+    "title": "إنشاء {{types}}"
+  },
+  "imagePicker": {
+    "title": "صورة {{thetypes}}",
+    "titles": "صور {{thetypes}}",
+    "types": "الأنواع المتاحة: JPG, PNG, JPEG",
+    "pickFile": "اختر ملفك"
+  },
+  "gbtn": {
+    "save": "حفظ",
+    "create": "إنشاء",
+    "update": "تحديث",
+    "updatePassword": "تحديث كلمة المرور",
+    "delete": "حذف",
+    "cancel": "إلغاء",
+    "remove": "إزالة",
+    "manage": "إدارة",
+    "edit": "تعديل",
+    "deleting": "جاري الحذف"
+  },
+  "table": {
+    "id": "المعرف",
+    "name": "الاسم",
+    "address": "العنوان",
+    "info": "المعلومة",
+    "year_of_construction": "سنة الإنشاء",
+    "year_of_registration": "سنة التسجيل",
+    "gears":"نوع ناقل الحركة",
+    "mileage": "عدد الكيلومترات",
+    "fuel_type": "نوع الوقود ",
+    "offer":"من العروض",
+    "package":"الباقة",
+    "showroom":"المعرض",
+    "count_days":"عدد الأيام",
+    "brand": "الماركة",
+    "carsNumber": "عدد السيارات",
+    "whatsapp_phone" : "واتساب",
+    "description": "الوصف",
+    "actions": "الإجراءات",
+    "category": "الفئة",
+    "createdAt": "تاريخ الإنشاء",
+    "image": "الصورة",
+    "title": "العنوان",
+    "role": "الدور",
+    "phone": "الهاتف",
+    "email": "البريد الإلكتروني",
+    "exportCSV": "تصدير إلى CSV",
+    "price": "السعر",
+    "old_price": "السعر القديم",
+    "days_left": "عدد الأيام المتبقية",
+    "question": "السؤال",
+    "username": "اسم المستخدم",
+    "packageName": "اسم الباقة",
+    "priceName": "السعر",
+    "type": "النوع",
+    "startDate": "تاريخ البدء",
+    "endDate": "تاريخ الانتهاء",
+    "status": "الحالة",
+    "active": "نشط",
+    "notActive": "غير نشط",
+    "subType": "نوع الاشتراك"
+
+  },
+  "addShowroom": {
+    "create": "إنشاءالمعرض",
+    "update": "تحديث المعرض"
+  },
+  "showroomProfile": {
+    "loading_error": "فشل تحميل الاشتراكات",
+    "update": "تحديث المعرض",
+    "updatePassword": "تحديث كلمة المرور",
+    "packages":"الباقات",
+    "cars":"السيارات",
+    "available": "سيارة متوفرة",
+    "package": "الباقة",
+      "sub_pan": "خطة الاشتراك",
+      "price": "السعر",
+      "subsc_at": "تم الاشتراك في",
+      "experid_on": "تنتهي في",
+      "renew": "يجب على المعرض التجديد بعد {{days_left}} يومًا",
+      "no_subscriptions":" لم يتم العثور على أي اشتراكات",
+      "no_subscriptions_desc": "لا يوجد لدى صالة العرض هذه أي اشتراكات نشطة حتى الآن"
+  },
+  "carProfile": {
+    "update": "تعديل السيارة",
+    "drive_type":"نوع الدفع",
+    "fuel_type":"نوع الوقود ",
+    "gears":"نوع ناقل الحركة",
+    "mileage":"عدد الكيلومترات",
+    "seats": "المقاعد",
+    "color":"اللون"
+  },
+  "deleteSec": {
+    "button": "حذف {{thetypes}}",
+    "warning": "هل أنت متأكد أنك تريد حذف هذا العنصر؟ هذه العملية لا يمكن التراجع عنها وسيتم فقدان جميع البيانات المرتبطة به بشكل دائم. للموافقة على الحذف، يرجى النقر على زر الحذف مرتين للتأكيد."
+  },
+  "permissions": {
+    "title": "إدارة الصلاحيات",
+    "available": "الصلاحيات المتاحة",
+    "selected": "الصلاحيات المختارة",
+    "save": "حفظ التغييرات",
+    "moveSelected": "نقل المحدد",
+    "moveAllToSelected": "نقل الكل إلى المحدد",
+    "moveAllToAvailable": "نقل الكل إلى المتاح",
+    "types": {
+      "brands": "ماركة",
+      "models": "موديل",
+      "cars": "سيارة",
+      "roles": "دور",
+      "employees": "موظف",
+      "offers": "عرض",
+      "showrooms": "معرض",
+      "packages": "باقة",
+      "subscriptions": "اشتراك",
+      "stores": "متجر",
+      "products": "منتج",
+      "services": "خدمة",
+      "orders": "طلب",
+      "banners": "لافتة",
+      "FAQ": "أسئلة شائعة",
+      "dashboard":"لوحة التحكم"
+    },
+    "actions": {
+      "view": "عرض",
+      "create": "إنشاء",
+      "update": "تحديث",
+      "delete": "حذف",
+      "access": "وصول",
+      "categories": "فئات"
+    }
+  },
+  "createCar": {
+    "create":"إنشاء سيارة"
+  },
+  "error": {
+    "404": {
+      "title": "عذرًا، أنت خارج المعرض",
+      "action": "اذهب إلى المعرض"
+    }
+  },
+  "sidebar": {
+    "dashboard": "لوحة التحكم",
+    "features": "المعلومات الإضافية",
+    "home": "الرئيسية",
+    "brands" : "إدارة الماركات و الموديلات",
+    "showrooms" : "إدارة المعارض",
+    "employees" : "إدارة الموظفين",
+    "cars" : "إدارة السيارات",
+    "brand_man" : "إدارة الماركات",
+    "model_man" : "إدارة الموديلات",
+    "offers_man" : "إدارة العروض",
+    "offer" : "العروض",
+    "role" : "الأدوار والأذونات",
+    "offer_create" : "إنشاء عرض",
+    "showroom_man" : "إدارة المعارض",
+    "employee_man" : "إدارة الموظفين",
+    "cars_man" : "إدارة السيارات",
+    "brand": "الماركات",
+    "brand_create": "إنشاء ماركة",
+    "model": "الموديلات",
+    "model_create": "إنشاء موديل",
+    "all_sub": "الاشتراكات",
+    "create_sub": "إنشاء اشتراك",
+    "showroom": "المعارض",
+    "showroom_create": "إنشاء معرض",
+    "employee": "الموظفين",
+    "employee_create": "إنشاء موظف",
+    "car": "السيارات",
+    "car_create": "إضافة سيارة",
+    "users": "المستخدمون",
+    "all_users": "جميع المستخدمين",
+    "fin_man": "إدارة المالية",
+    "packages": "الباقات",
+    "sub_man": "إدارة الاشتراكات",
+    "fit_sub": "اشتراكات اللياقة",
+    "food_sub": "اشتراكات الطعام",
+    "meals_man": "إدارة الوجبات",
+    "meals": "الوجبات",
+    "meal_plans": "خطط الوجبات",
+    "meal_types": "أنواع الوجبات",
+    "meal_ingred": "إدارة المخزون",
+    "delivery_times": "مواعيد التوصيل",
+    "week_man": "إدارة الأسابيع",
+    "chat": "المحادثة",
+    "workout_man": "إدارة التمارين",
+    "exercises": "التمارين",
+    "all_ex": "جميع التمارين",
+    "create_ex": "إنشاء تمرين",
+    "workouts": "التمارين الرياضية",
+    "create_workout": "إنشاء تمرين رياضي",
+    "banner": "لافتة",
+    "banners": "لافتات",
+    "public": "عام",
+    "privacy": "سياسة الخصوصية",
+    "terms": "الشروط والأحكام",
+    "faq": "الأسئلة الشائعة",
+    "sports": "الرياضة",
+    "user_req": "طلبات المستخدمين",
+    "workout_req": "طلبات التمارين",
+    "group_workout": "تمرين جماعي",
+    "orders": "الطلبات"
+  },
+  "brands": {
+    "form": {
+      "name": "اسم الماركة",
+      "image": "رفع صورة الماركة",
+      "imageUpdate": "تحديث صورة الماركة",
+      "update": "تحديث الصورة"
+    }
+  },
+  "roles": {
+    "form": {
+      "name": "اسم الدور"
+    }},
+  "createShowroom": {
+    "title": "إنشاء معرض جديد"
+  },
+  "createEmployee": {
+    "title": "إنشاء موظف جديد"
+  },
+  "createBrand": {
+    "title": "إنشاء ماركة جديد"
+  },
+  "createRole": {
+    "title": "إنشاء دور جديد"
+  },
+  "createModel": {
+    "title": "إنشاء موديل جديد"
+  },
+  "models": {
+    "form": {
+      "name": "اسم الموديل",
+      "brand": "الماركة",
+      "selectBrand": "اختر الماركة"
+    }
+  },
+  
+  "employeeForm": {
+    "name": "الاسم",
+    "name_ar":"الاسم بالعربي",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "password_confirmation": "تأكيد كلمة المرور",
+    "phone": "الهاتف",
+    "role":"الدور",
+    "selectRole": "اختر الدور",
+    "create": "إنشاء موظف",
+      "update": "تحديث موظف"
+  },
+  
+  "slugs": {
+    "faq": "الأسئلة الشائعة",
+    "brand": "الماركة",
+    "model":"الموديل",
+    "showroom":"المعرض",
+    "deliveryTime": "وقت التسليم",
+    "role": "دور",
+    "exc": "تمرين",
+    "target_mus": "العضلات المستهدفة",
+    "survey": "استبيان",
+    "ingredient": "مكون",
+    "meal_plan": "خطة الوجبات",
+    "meal_type": "نوع الوجبة",
+    "banner": "لافتة",
+    "package": "الباقة",
+    "price": "السعر",
+    "days": "الأيام",
+    "question": "السؤال",
+    "answer": "الإجابة",
+    "title": "العنوان",
+    "packageName": "اسم الباقة",
+    "packageDesc": "وصف الباقة",
+    "name": "الاسم",
+    "description": "الوصف"
+  },
+  
+  "login": {
+    "welcome": "مرحبًا بعودتك!",
+    "title": "تسجيل الدخول",
+    "form": {
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "btn": "تسجيل الدخول"
+    }
+  },
+  "authContext": {
+    "waiting": "جارٍ الانتظار...",
+    "desc": "نقوم بإعداد ملفك الشخصي، يرجى الانتظار قليلًا."
+  },
+  
+
+  "pricingForm": {
+    "price": "السعر",
+    "title": "العنوان",
+    "numberOfDays": "عدد الأيام"
+  },
+
+  
+  "profile": {
+    "my": "ملفي الشخصي",
+    "logout": "تسجيل الخروج"
+  },
+  "editor": {
+    "placeholder": "ابدأ الكتابة هنا..."
+  },
+  
+  "click-tw": "اضغط مرة اخرى لتأكيد الأمر",
+
+  "global": {
+    "loading": "جارٍ التحميل",
+    "more": "المزيد",
+    "group": "مجموعة",
+    "person": "مُخصّص",
+    "personalized": "مُخصّص"
+  },
+
+  
+  
+  "faqForm": {
+    "ques": "السؤال",
+    "ans": "الإجابة"
+  },
+  
+  "deliveryTime": {
+    "title": "وقت التسليم",
+    "form": {
+      "title": "وقت التسليم"
+    }
+  },
+  "home": {
+    "active_fit_sub": "الاشتراكات الرياضية النشطة",
+    "active_meal_sub": "الاشتراكات الغذائية النشطة",
+    "new_sing": "التسجيلات الجديدة",
+    "completion_rate": "معدل إكمال التمارين"
+  },
+  "notification": {
+    "title": "عنوان الإشعار",
+    "body": "محتوى الإشعار",
+    "send": "إرسال إشعار ",
+    "send_act": "إرسال إشعار"
+  },
+  "all_users": {
+    "create_user": "إنشاء مستخدم جديد"
+  },
+  "gender": {
+    "male": "ذكر",
+    "female": "انثى"
+  },
+  "userProfile": {
+    "setup_required": "إعداد الملف الشخصي مطلوب",
+    "title": "معلومات العميل",
+    "name": "الاسم",
+    "height": "الطول",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "gender": "الجنس",
+    "goal": "الهدف",
+    "age": "العمر",
+    "sport": "الرياضة",
+    "dietary": "التفضيلات الغذائية",
+    "trainingLocation": "موقع التدريب",
+    "sportDuration": "مدة التدريب",
+    "activation": {
+      "activate": "تفعيل",
+      "deactivate": "إلغاء التفعيل"
+    },
+    "fit_sub": {
+      "title": "اشتراك اللياقة البدنية",
+      "package": "الباقة",
+      "sub_pan": "خطة الاشتراك",
+      "price": "السعر",
+      "subsc_at": "تم الاشتراك في",
+      "experid_on": "انتهت في",
+      "renew": "يجب على اللاعب التجديد بعد {{days_left}} يومًا"
+    },
+    "meal_sub": {
+      "title": "اشتراك الوجبات",
+      "sub_info": "معلومات الاشتراك",
+      "start": "بدء",
+      "end": "نهاية",
+      "address": "العنوان",
+      "city": "المدينة",
+      "street": "الشارع",
+      "building": "البناية",
+      "postal": "الرمز البريدي",
+      "state": "الولاية",
+      "deliveryTime": "وقت التوصيل"
+    },
+    "meal_selection": {
+      "title": "اختيار الوجبات",
+      "day": "اليوم"
+    },
+    "sur_ans": {
+      "title": "إجابة الاستبيان"
+    }
+  },
+  "progressHistory_ar": {
+    "title": "سجل التقدم",
+    "weight": "تقدم الوزن"
+  },
+  "mealCard": {
+    "calories": "السعرات الحرارية",
+    "protien": "البروتين",
+    "carb": "الكربوهيدرات",
+    "fats": "الدهون",
+    "fiber": "الألياف",
+    "types": "الأنواع",
+    "ingredient": "المكونات"
+  },
+  "workout_man": {
+    "add": "إضافة تمرين",
+    "nodata": "لا توجد تمارين هنا بعد"
+  },
+  "workoutCrad": {
+    "level": "المستوى",
+    "duration": "المدة المتوقعة"
+  },
+  "createUser": {
+    "title": "إنشاء مستخدم جديد"
+  },
+  "addUser": {
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "phone": "الهاتف",
+    "role": "الدور",
+    "admin": "مشرف",
+    "coach": "مدرب",
+    "kitchen": "مطبخ",
+    "create": "إنشاء مستخدم"
+  },
+  "fitnessSubscriptions": {
+    "title": "تحليل الاشتراكات الرياضية",
+    "renewal": "تجديد الاشتراكات الرياضية"
+  },
+  "foodSubscriptions": {
+    "title": "تحليل اشتراكات الطعام",
+    "renewal": "تجديد اشتراكات الطعام"
+  },
+  "loadingError": {
+    "title": "خطأ أثناء تحميل البيانات",
+    "refetch": "إعادة التحميل"
+  },
+  "createWorkout": {
+    "header": "إنشاء تمرين {{type}} {{slug}} في {{day}}",
+    "personSlug": "للمستخدم {{username}}",
+    "groupSlug": "للحزمة {{packageName}}"
+  },
+  "workoutForm": {
+    "workout": "تمرين",
+    "title": "العنوان",
+    "diff_level": "مستوى الصعوبة",
+    "duration": "المدة",
+    "type": "نوع التمرين",
+    "message": "رسالة تحفيزية",
+    "desc": "الوصف",
+    "no_exc_sele": "لا تمارين تم اختيارها",
+    "exce_sele": "تم اختيار {{count}} تمرينًا ليكونوا في هذا التمرين",
+    "search": "بحث"
+  },
+  
+  "vidPicker": {
+    "title": "فيديو {{slug}}",
+    "types": "الأنواع المتاحة: Mp4"
+  },
+  "excerciseCard": {
+    "duration": "المدة"
+  },
+  "workoutDetail": {
+    "main": "الرئيسية",
+    "settings": "الإعدادات",
+    "level": "المستوى",
+    "duration": "المدة المتوقعة",
+    "craete_at": "تم الإنشاء في",
+    "workoutExcer": "تمرين التمرين"
+  },
+  
+  "nodata": "لا يوجد {{slug}} هنا بعد",
+  "createExc": {
+    "name": "الاسم",
+    "description": "الوصف",
+    "images": "الصور",
+    "target_muscles_image": "صورة العضلات المستهدفة",
+    "notes": "ملاحظات",
+    "exc_vid": "فيديو التمرين",
+    "watting": "يرجى الانتظار، جارٍ الإنشاء...",
+    "cooling_time": "وقت الراحة"
+  },
+  "excDetail": {
+    "tabs": {
+      "main": "الرئيسي",
+      "settings": "الإعدادات",
+      "leaderBoard": "لوحة الشرف"
+    },
+    "detailPanel": {
+      "expectedDuration": "المدة المتوقعة",
+      "exc_image": "صورة التمرين",
+      "tar_mus_image": "صورة العضلات المستهدفة"
+    }
+  },
+  "surveyForm": {
+    "title": "عنوان الاستبيان"
+  },
+  "surveyDetail": {
+    "update": "تحديث الاستبيان",
+    "question_sec": "إدارة الأسئلة"
+  },
+  
+  "mealForm": {
+    "name": "اسم الوجبة",
+    "desc": "وصف الوجبة",
+    "calories": "سعرات الوجبة",
+    "protein": "البروتين (غ)",
+    "carb": "الكربوهيدرات (غ)",
+    "fats": "الدهون (غ)",
+    "fiber": "الألياف (غ)",
+    "types": "أنواع الوجبات",
+    "ingredients": "مكونات الوجبة",
+    "manageQun": "ادارة كميات المواد في الوجبة"
+  },
+  "ingredientForm": {
+    "title": "عنوان المكون",
+    "stock": "الكمية في المخزن",
+    "unit": "الوحدة"
+  },
+  "mealPlans": {
+    "create": "إنشاء خطة وجبة"
+  },
+  "mealPlanCard": {
+    "sub_count": "عدد الاشتراكات",
+    "calories": "السعرات الحرارية",
+    "desc": "تتضمن هذه الخطة"
+  },
+  "createMealPlan": {
+    "title": "إنشاء خطة وجبة جديدة"
+  },
+  "mealPlanForm": {
+    "title": "العنوان",
+    "calories": "السعرات الحرارية",
+    "price": "السعر الشهري",
+    "types": "أنواع الوجبات"
+  },
+  "updateMealPlan": {
+    "title": "تحديث خطة الوجبات"
+  },
+  "mealTypeForm": {
+    "title": "العنوان"
+  },
+  "days": {
+    "saturday": "السبت",
+    "sunday": "الأحد",
+    "monday": "الإثنين",
+    "tuesday": "الثلاثاء",
+    "wednesday": "الأربعاء",
+    "thursday": "الخميس",
+    "friday": "الجمعة"
+  },
+  "all": "الكل",
+  
+  "dollar": "دولار",
+  "packageForm": {
+    "name": "اسم الباقة",
+    "desc": "وصف الباقة",
+    "type": "نوع الباقة"
+  },
+  "pricing": {
+    "title": "إدارة التسعير"
+  },
+  "survey": {
+    "title": "إدارة الاستطلاعات"
+  },
+  
+  "mealOrderDetail": {
+    "order_status": "حالة الطلب",
+    "listed": "مدرج",
+    "pending": "معلق",
+    "done": "تم",
+    "kcal": "kcal",
+    "monthly": "شهر",
+    "ingredientId": "المعرف",
+    "ingredientName": "اسم المكون",
+    "required": "الكمية المطلوبة",
+    "available": "الكمية في المخزن",
+    "stockInsufficient": "احمد عفيف",
+    "orderDetail": "تفاصيل الطلب",
+    "orderId": "رقم الطلب",
+    "orderDate": "تاريخ الطلب",
+    "orderStatus": "حالة الطلب",
+    "customer": {
+      "title": "معلومات العميل",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "gender": "الجنس",
+      "goal": "الهدف",
+      "age": "العمر",
+      "dietary": "التفضيلات الغذائية"
+    },
+    "sub": {
+      "title": "الاشتراك",
+      "plan": "الخطة",
+      "calories": "سعرات الخطة",
+      "price": "السعر",
+      "startDate": "تاريخ البدء",
+      "endDate": "تاريخ الانتهاء"
+    },
+    "delivery": {
+      "title": "معلومات التوصيل",
+      "address": "العنوان",
+      "notes": "ملاحظات التوصيل",
+      "time": "وقت التوصيل"
+    },
+    "meals": {
+      "title": "الوجبات"
+    }
+  },
+  
+
+  "addBanner": {
+    "button": "انشاء لافتة"
+  },
+  "createIngredient": {
+    "title": "انشاء اضافة جديدة"
+  },
+  "createQuestion": {
+    "button": "انشاء سؤال جديد"
+  },
+  "questionForm": {
+    "question": "السؤال",
+    "type": "نوع السؤال",
+    "normal": "عادي",
+    "choices": "الخيارات"
+  },
+  "createMeal": {
+    "title": "انشاء وجبة جديدة"
+  },
+  "arf": "{{slug}} بالعربي",
+  "unit": {
+    "kg": "كجم",
+    "g": "جم",
+    "ml": "مل",
+    "l": "لتر",
+    "lb": "رطل",
+    "tbsp": "ملعقة كبيرة",
+    "tsp": "ملعقة صغيرة",
+    "pcs": "قطع"
+  },
+  "addToStock": {
+    "new_qun": "الكمية الجديدة",
+    "title": "تحديث كمية المخزون",
+    "description": "يتيح لك هذا النموذج تحديث كمية المخزون لمنتج معين. أدخل الكمية الجديدة ثم اضغط على زر الحفظ لتطبيق التغييرات. يتوفر تلميح للحصول على إرشادات إضافية."
+  }
+}

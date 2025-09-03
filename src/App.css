@@ -1,0 +1,18 @@
+:fullscreen,
+:-ms-fullscreen,
+:-moz-full-screen,
+:-webkit-full-screen {
+  background-color: #fff;
+}
+
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+#root:fullscreen {
+  height: 100%;
+  overflow-y: auto;
+}
