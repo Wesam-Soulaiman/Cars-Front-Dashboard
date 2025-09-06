@@ -87,7 +87,7 @@ const StructuresForm = ({
                 }
               }}
               name="main_photo"
-              accept="image/png,image/jpg,image/jpeg"
+              // accept="image/png,image/jpg,image/jpeg,image/svg"
               id="main_photo"
               onBlur={handleBlur}
               sx={{

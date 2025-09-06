@@ -9,7 +9,7 @@ const useGetTranslation = () => {
 
   const getTranslation2 = (obj, attr) => {
     const translatedKey = i18n.language === "ar" ? `${attr}_ar` : attr;
-    return obj[translatedKey] ?? obj[attr];
+    return obj?.[translatedKey] ?? obj?.[attr];
   };
 
   return {

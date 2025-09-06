@@ -13,8 +13,6 @@ export const useGetCars = ({
   sort_by,
   sort_order,
 }) => {
-  const { i18n } = useTranslation();
-
   const getCars = () => {
     const params = {
       page: page + 1,
@@ -22,12 +20,8 @@ export const useGetCars = ({
       sort_by: sort_by,
       sort_order: sort_order,
       storeId: storeId,
+      name: name,
     };
-    if (i18n.language === "ar") {
-      params.name_ar = name;
-    } else {
-      params.name = name;
-    }
     return request({
       url: "/admin/products",
       params,
