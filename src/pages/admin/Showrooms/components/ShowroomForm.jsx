@@ -4,7 +4,11 @@ import { Box, Button, IconButton, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import FileImagePicker from "../../../../components/FileImagePicker";
 import { MdOutlineDeleteSweep } from "react-icons/md";
-import { TextInput } from "../../../../components/forms";
+import { SelectInput, TextInput } from "../../../../components/forms";
+import { useEffect, useState } from "react";
+import { useGetGovernorates } from "../../../../api/governorates";
+import useGetTranslation from "../../../../utils/useGetTranslation";
+import { useGetStoreType } from "../../../../api/storeType";
 
 const defaultInitialValues = {
   name: "",
@@ -44,6 +48,9 @@ const ShowroomForm = ({
         .matches(/^[0-9]+$/)
         .min(8)
         .max(15),
+      store_type_id: Yup.string().required().label(t("forms.storeType")),
+      governorate_id: Yup.string().required().label(t("forms.governorate")),
+
       address: Yup.string().label(t("forms.address")).max(255),
       address_ar: Yup.string().label(t("forms.address_ar")).max(255),
       photo: Yup.mixed()
@@ -107,12 +114,64 @@ const ShowroomForm = ({
     handleSubmit,
     setFieldValue,
     isValid,
+    setFieldTouched,
   } = useFormik({
     initialValues: { ...defaultInitialValues, ...initialValues },
     validationSchema,
     onSubmit,
     validateOnMount: true,
   });
+
+  const { getTranslation2 } = useGetTranslation();
+
+  const [searchGovernorate, setSearchGovernorate] = useState("");
+  const [debouncedSearchGovernorate, setDebouncedSearchGovernorate] =
+    useState("");
+
+  const [searchStoreType, setSearchStoreType] = useState("");
+  const [debouncedSearchStoreType, setDebouncedSearchStoreType] = useState("");
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchGovernorate(searchGovernorate);
+    }, 1000);
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [searchGovernorate]);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchStoreType(searchStoreType);
+    }, 1000);
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [searchStoreType]);
+
+  // request
+  const [page] = useState(0);
+  const [pageSize] = useState(15);
+
+  const { data, isLoading } = useGetGovernorates({
+    page,
+    pageSize,
+    name: debouncedSearchGovernorate,
+  });
+
+  const governorateOptions = data?.data?.data || [];
+  const selectedGovernorate =
+    governorateOptions.find((b) => b.id === values.governorate_id) || null;
+
+  const { data: types, isLoading: isLoadingTypes } = useGetStoreType({
+    page,
+    pageSize,
+    name: debouncedSearchStoreType,
+  });
+
+  const storeTypeOptions = types?.data?.data || [];
+  const selectedStoreType =
+    storeTypeOptions.find((b) => b.id === values.store_type_id) || null;
 
   // Field group components
   const renderPersonalInfoFields = () => (
@@ -210,6 +269,46 @@ const ShowroomForm = ({
         helperText={touched.address_ar && errors.address_ar}
         required={task === "create"}
         touched={touched.address_ar}
+      />
+    </Box>
+  );
+  const renderFields = () => (
+    <Box display="flex" flexDirection={{ xs: "column", sm: "row" }} gap={2}>
+      <SelectInput
+        name="governorate_id"
+        options={governorateOptions}
+        value={selectedGovernorate}
+        label={t("forms.governorate")}
+        placeholder={t("forms.selectGovernorate")}
+        error={touched.governorate_id && Boolean(errors.governorate_id)}
+        helperText={touched.governorate_id && errors.governorate_id}
+        onInputChange={(e, newInputValue) =>
+          setSearchGovernorate(newInputValue)
+        }
+        loading={isLoading}
+        onChange={(e, newValue) => {
+          setFieldValue("governorate_id", newValue ? newValue.id : "");
+        }}
+        onBlur={() => setFieldTouched("governorate_id", true)}
+        getOptionLabel={(option) => getTranslation2(option, "name")}
+        isOptionEqualToValue={(option, value) => option.id === value.id}
+      />
+      <SelectInput
+        name="store_type_id"
+        options={storeTypeOptions}
+        value={selectedStoreType}
+        label={t("forms.storeType")}
+        placeholder={t("forms.selectedStoreType")}
+        error={touched.store_type_id && Boolean(errors.store_type_id)}
+        helperText={touched.store_type_id && errors.store_type_id}
+        onInputChange={(e, newInputValue) => setSearchStoreType(newInputValue)}
+        loading={isLoadingTypes}
+        onChange={(e, newValue) => {
+          setFieldValue("store_type_id", newValue ? newValue.id : "");
+        }}
+        onBlur={() => setFieldTouched("store_type_id", true)}
+        getOptionLabel={(option) => getTranslation2(option, "name")}
+        isOptionEqualToValue={(option, value) => option.id === value.id}
       />
     </Box>
   );
@@ -398,6 +497,7 @@ const ShowroomForm = ({
             {renderPersonalInfoFields()}
             {renderContactFields()}
             {renderAddressFields()}
+            {renderFields()}
             {renderPhotoField()}
           </>
         )}

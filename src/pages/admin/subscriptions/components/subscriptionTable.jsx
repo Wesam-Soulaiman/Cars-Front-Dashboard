@@ -58,7 +58,7 @@ const SubscriptionTable = () => {
     active: columnFilters.find((f) => f.id === "active")?.value,
   });
 
-  const data = subscriptions?.data?.data?.data.products || [];
+  const data = subscriptions?.data?.data?.data.orders || [];
   const total = subscriptions?.data?.data?.pagination?.total || 0;
   const packagesData = packages?.data?.data.data || [];
 

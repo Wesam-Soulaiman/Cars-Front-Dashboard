@@ -23,7 +23,7 @@ const SubscriptionsBarAnalysis = () => {
   }
 
   const chartData =
-    subscription.data?.data?.data.char?.map((item) => ({
+    subscription.data?.data?.data.chart?.map((item) => ({
       y: item.order_count,
       x: item.month_name,
     })) || [];

@@ -44,7 +44,6 @@ const UpdateSub = ({ sub }) => {
                 service_id: sub.service_id,
                 store_id: sub.store_id,
                 price: sub.price,
-                count_days: sub.count_days,
                 start_time: sub.start_time ? dayjs(sub.start_time) : null,
               }}
               task="update"

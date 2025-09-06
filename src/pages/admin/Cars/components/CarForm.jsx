@@ -16,12 +16,7 @@ import { useGetBrands } from "../../../../api/brands";
 import { useGetModels } from "./../../../../api/models/index";
 import { useGetShowrooms } from "../../../../api/showrooms";
 import useGetTranslation from "../../../../utils/useGetTranslation";
-import { structuresData } from "../../../../data/structure";
 import { driveTypeData } from "../../../../data/driveTypeData";
-import { fuelData } from "../../../../data/fuelData";
-import { seatsTypeData } from "../../../../data/seatsTypeData";
-import { lightsTypeData } from "../../../../data/lightsData";
-import { gearsTypesData } from "../../../../data/gearsTypesData";
 import { MdOutlineDeleteSweep } from "react-icons/md";
 import FileImagePicker from "../../../../components/FileImagePicker";
 import {
@@ -33,6 +28,12 @@ import { typeData } from "../../../../data/typeData";
 import { useGetFeatures } from "../../../../api/feature";
 import Role from "../../../../components/Role";
 import { useDeleteCarPhoto } from "../../../../api/cars";
+import { useGetColors } from "../../../../api/colors";
+import { useGetFuels } from "../../../../api/fuel";
+import { useGetGears } from "../../../../api/gears";
+import { useGetLights } from "../../../../api/lights";
+import { useGetDeals } from "../../../../api/deals";
+import { useGetStructures } from "../../../../api/structures";
 
 const CarForm = ({
   task = "create",
@@ -49,6 +50,10 @@ const CarForm = ({
     model_id: Yup.string().required().label(t("forms.model")),
     structure_id: Yup.string().required().label(t("forms.structure")),
     store_id: Yup.string().default(1).label(t("forms.showroom")),
+    deal_id: Yup.string().default(1).label(t("forms.deal")),
+    fuel_type_id: Yup.string().default(1).label(t("forms.fuel_type")),
+    gear_id: Yup.string().default(1).label(t("forms.gear")),
+    light_id: Yup.string().default(1).label(t("forms.light")),
     price: Yup.number().required().positive().label(t("forms.price")),
     mileage: Yup.number().required().positive().label(t("forms.mileage")),
     year_of_construction: Yup.number()
@@ -66,18 +71,14 @@ const CarForm = ({
       .positive()
       .label(t("forms.number_of_seats")),
     drive_type: Yup.string().required().label(t("forms.drive_type")),
-    fuel_type: Yup.string().required().label(t("forms.fuel_type")),
-    doors: Yup.number().required().min(1).label(t("forms.doors")),
+    // doors: Yup.number().required().min(1).label(t("forms.doors")),
     cylinders: Yup.number().required().min(1).label(t("forms.cylinders")),
     cylinder_capacity: Yup.number()
       .required()
       .positive()
       .label(t("forms.cylinder_capacity")),
-    gears: Yup.string().required().label(t("forms.gears")),
-    type: Yup.string().required().label(t("forms.type")),
-    seat_type: Yup.string().required().label(t("forms.seat_type")),
-    color: Yup.string().required().label(t("forms.color")),
-    lights: Yup.string().required().label(t("forms.lights")),
+    used: Yup.number().required().label(t("forms.type")),
+    color_id: Yup.string().required().label(t("forms.color")),
     features: Yup.array().label(t("forms.features")),
     main_photo: Yup.mixed().required().label(t("forms.main_photo")),
     photos: Yup.array().of(Yup.mixed()).label(t("forms.photos")),
@@ -104,12 +105,24 @@ const CarForm = ({
   const [searchShowroom, setSearchShowroom] = useState("");
   const [searchBrand, setSearchBrand] = useState("");
   const [searchModel, setSearchModel] = useState("");
+  const [searchColor, setSearchColor] = useState("");
+  const [searchLight, setSearchLight] = useState("");
+  const [searchGear, setSearchGear] = useState("");
+  const [searchStructure, setSearchStructure] = useState("");
+  const [searchFeal, setSearchFeal] = useState("");
   const [searchFeature, setSearchFeature] = useState("");
+  const [searchDeal, setSearchDeal] = useState("");
 
   // Debounced search states
   const [debouncedSearchBrand, setDebouncedSearchBrand] = useState("");
   const [debouncedSearchModel, setDebouncedSearchModel] = useState("");
   const [debouncedSearchShowroom, setDebouncedSearchShowroom] = useState("");
+  const [debouncedSearchColor, setDebouncedSearchColor] = useState("");
+  const [debouncedSearchLight, setDebouncedSearchLight] = useState("");
+  const [debouncedSearchGear, setDebouncedSearchGear] = useState("");
+  const [debouncedSearchStructure, setDebouncedSearchStructure] = useState("");
+  const [debouncedSearchDeal, setDebouncedSearchDeal] = useState("");
+  const [debouncedSearchFeal, setDebouncedSearchFeal] = useState("");
   const [debouncedSearchFeature, setDebouncedSearchFeature] = useState("");
 
   // Debounce search inputs
@@ -119,6 +132,24 @@ const CarForm = ({
     }, 1000);
     return () => clearTimeout(timerId);
   }, [searchShowroom]);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchColor(searchColor);
+    }, 1000);
+    return () => clearTimeout(timerId);
+  }, [searchColor]);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchLight(searchLight);
+    }, 1000);
+    return () => clearTimeout(timerId);
+  }, [searchLight]);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchGear(searchGear);
+    }, 1000);
+    return () => clearTimeout(timerId);
+  }, [searchGear]);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -140,6 +171,25 @@ const CarForm = ({
     }, 1000);
     return () => clearTimeout(timerId);
   }, [searchFeature]);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchStructure(searchStructure);
+    }, 1000);
+    return () => clearTimeout(timerId);
+  }, [searchStructure]);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchDeal(searchDeal);
+    }, 1000);
+    return () => clearTimeout(timerId);
+  }, [searchDeal]);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchFeal(searchFeal);
+    }, 1000);
+    return () => clearTimeout(timerId);
+  }, [searchFeal]);
 
   // API requests
   const [page] = useState(0);
@@ -168,6 +218,37 @@ const CarForm = ({
     pageSize,
     name: debouncedSearchShowroom,
   });
+  const colors = useGetColors({
+    page,
+    pageSize,
+    name: debouncedSearchColor,
+  });
+  const fuelTypes = useGetFuels({
+    page,
+    pageSize,
+    name: debouncedSearchFeal,
+  });
+  const gears = useGetGears({
+    page,
+    pageSize,
+    name: debouncedSearchGear,
+  });
+  const lights = useGetLights({
+    page,
+    pageSize,
+    name: debouncedSearchLight,
+  });
+
+  const deals = useGetDeals({
+    page,
+    pageSize,
+    name: debouncedSearchDeal,
+  });
+  const structures = useGetStructures({
+    page,
+    pageSize,
+    name: debouncedSearchStructure,
+  });
 
   // Memoize options and selected values
   const brandOptions = useMemo(
@@ -187,27 +268,64 @@ const CarForm = ({
     () => features?.data?.data?.data || [],
     [features.data]
   );
+  const dealOptions = useMemo(
+    () => deals?.data?.data?.data || [],
+    [deals.data]
+  );
+  const gearOptions = useMemo(
+    () => gears?.data?.data?.data || [],
+    [gears.data]
+  );
+  const lightOptions = useMemo(
+    () => lights?.data?.data?.data || [],
+    [lights.data]
+  );
+  const colorOptions = useMemo(
+    () => colors?.data?.data?.data || [],
+    [colors.data]
+  );
+  const fuelOptions = useMemo(
+    () => fuelTypes?.data?.data?.data || [],
+    [fuelTypes.data]
+  );
+  const structureOptions = useMemo(
+    () => structures?.data?.data?.data || [],
+    [structures.data]
+  );
 
   const selectedOptions = useMemo(
     () => ({
       brand: brandOptions.find((b) => b.id === values.brand_id) || null,
+      gear: gearOptions.find((b) => b.id === values.gear_id) || null,
+      light: lightOptions.find((b) => b.id === values.light_id) || null,
+      fuel: fuelOptions.find((b) => b.id === values.fuel_type_id) || null,
+      deal: dealOptions.find((b) => b.id === values.deal_id) || null,
       model: modelOptions.find((b) => b.id === values.model_id) || null,
+      color: colorOptions.find((b) => b.id === values.color_id) || null,
       showroom: showroomOptions.find((b) => b.id === values.store_id) || null,
       structure:
-        structuresData.find((b) => b.id === values.structure_id) || null,
+        structureOptions.find((b) => b.id === values.structure_id) || null,
       driveType: driveTypeData.find((b) => b.id === values.drive_type) || null,
-      fuel: fuelData.find((b) => b.id === values.fuel_type) || null,
-      seat: seatsTypeData.find((b) => b.id === values.seat_type) || null,
-      light: lightsTypeData.find((b) => b.id === values.lights) || null,
-      gear: gearsTypesData.find((b) => b.id === values.gears) || null,
-      type: typeData.find((b) => b.id === values.type) || null,
+      used: typeData.find((b) => b.value === values.used) || null,
       features: values.features
         ? featureOptions.filter((feature) =>
             values.features.includes(feature.id)
           )
         : [],
     }),
-    [values, brandOptions, modelOptions, showroomOptions, featureOptions]
+    [
+      values,
+      brandOptions,
+      modelOptions,
+      showroomOptions,
+      featureOptions,
+      colorOptions,
+      dealOptions,
+      fuelOptions,
+      gearOptions,
+      lightOptions,
+      structureOptions,
+    ]
   );
 
   // Memoize handlers
@@ -316,7 +434,7 @@ const CarForm = ({
       </Role>
 
       <SelectInput
-        options={structuresData}
+        options={structureOptions}
         value={selectedOptions.structure}
         label={t("forms.structure")}
         placeholder={t("forms.selectStructure")}
@@ -325,6 +443,7 @@ const CarForm = ({
         onChange={(e, newValue) =>
           setFieldValue("structure_id", newValue?.id || "")
         }
+        onInputChange={(e, newInputValue) => setSearchStructure(newInputValue)}
         getOptionLabel={(option) => getTranslation2(option, "name")}
         onBlur={() => setFieldTouched("structure_id", true)}
       />
@@ -348,17 +467,18 @@ const CarForm = ({
       />
 
       <SelectInput
-        options={fuelData}
+        options={fuelOptions}
         value={selectedOptions.fuel}
-        label={t("forms.fuel_type")}
-        placeholder={t("forms.selectfuel_type")}
-        error={touched.fuel_type && Boolean(errors.fuel_type)}
-        helperText={touched.fuel_type && errors.fuel_type}
+        label={t("forms.fuel_type_id")}
+        placeholder={t("forms.selectfuel_type_id")}
+        error={touched.fuel_type_id && Boolean(errors.fuel_type_id)}
+        helperText={touched.fuel_type_id && errors.fuel_type_id}
         onChange={(e, newValue) =>
-          setFieldValue("fuel_type", newValue?.id || "")
+          setFieldValue("fuel_type_id", newValue?.id || "")
         }
+        onInputChange={(e, newInputValue) => setSearchFeal(newInputValue)}
         getOptionLabel={(option) => getTranslation2(option, "name")}
-        onBlur={() => setFieldTouched("fuel_type", true)}
+        onBlur={() => setFieldTouched("fuel_type_id", true)}
       />
     </Box>
   );
@@ -366,29 +486,31 @@ const CarForm = ({
   const renderSeatTypeAndLightsSection = () => (
     <Box display="flex" flexDirection={{ xs: "column", sm: "row" }} gap={2}>
       <SelectInput
-        options={seatsTypeData}
-        value={selectedOptions.seat}
-        label={t("forms.seat_type")}
-        placeholder={t("forms.selectseat_type")}
-        error={touched.seat_type && Boolean(errors.seat_type)}
-        helperText={touched.seat_type && errors.seat_type}
-        onChange={(e, newValue) =>
-          setFieldValue("seat_type", newValue?.id || "")
-        }
+        options={gearOptions}
+        value={selectedOptions.gear}
+        label={t("forms.gears")}
+        placeholder={t("forms.selectgears")}
+        error={touched.gear_id && Boolean(errors.gear_id)}
+        helperText={touched.gear_id && errors.gear_id}
+        onInputChange={(e, newInputValue) => setSearchGear(newInputValue)}
+        onChange={(e, newValue) => setFieldValue("gear_id", newValue?.id || "")}
         getOptionLabel={(option) => getTranslation2(option, "name")}
-        onBlur={() => setFieldTouched("seat_type", true)}
+        onBlur={() => setFieldTouched("gear_id", true)}
       />
 
       <SelectInput
-        options={lightsTypeData}
+        options={lightOptions}
         value={selectedOptions.light}
         label={t("forms.lights")}
         placeholder={t("forms.selectlights")}
-        error={touched.lights && Boolean(errors.lights)}
-        helperText={touched.lights && errors.lights}
-        onChange={(e, newValue) => setFieldValue("lights", newValue?.id || "")}
+        error={touched.light_id && Boolean(errors.light_id)}
+        helperText={touched.light_id && errors.light_id}
+        onInputChange={(e, newInputValue) => setSearchLight(newInputValue)}
+        onChange={(e, newValue) =>
+          setFieldValue("light_id", newValue?.id || "")
+        }
         getOptionLabel={(option) => getTranslation2(option, "name")}
-        onBlur={() => setFieldTouched("lights", true)}
+        onBlur={() => setFieldTouched("light_id", true)}
       />
     </Box>
   );
@@ -468,31 +590,24 @@ const CarForm = ({
         onChange={(e) => setFieldValue("number_of_seats", e.target.value)}
         onBlur={() => setFieldTouched("number_of_seats", true)}
       />
-
-      <NumberInput
-        name="doors"
-        label={t("forms.doors")}
-        value={values.doors}
-        error={touched.doors && Boolean(errors.doors)}
-        helperText={touched.doors && errors.doors}
-        onChange={(e) => setFieldValue("doors", e.target.value)}
-        onBlur={() => setFieldTouched("doors", true)}
-      />
     </Box>
   );
 
   const renderGearsAndColorSection = () => (
     <Box display="flex" flexDirection={{ xs: "column", sm: "row" }} gap={2}>
       <SelectInput
-        options={gearsTypesData}
-        value={selectedOptions.gear}
-        label={t("forms.gears")}
-        placeholder={t("forms.selectgears")}
-        error={touched.gears && Boolean(errors.gears)}
-        helperText={touched.gears && errors.gears}
-        onChange={(e, newValue) => setFieldValue("gears", newValue?.id || "")}
+        options={colorOptions}
+        value={selectedOptions.color}
+        label={t("forms.color")}
+        placeholder={t("forms.selectColor")}
+        error={touched.color_id && Boolean(errors.color_id)}
+        helperText={touched.color_id && errors.color_id}
+        onInputChange={(e, newInputValue) => setSearchColor(newInputValue)}
+        onChange={(e, newValue) =>
+          setFieldValue("color_id", newValue?.id || "")
+        }
         getOptionLabel={(option) => getTranslation2(option, "name")}
-        onBlur={() => setFieldTouched("gears", true)}
+        onBlur={() => setFieldTouched("color_id", true)}
       />
 
       <ColorPickerField
@@ -508,14 +623,27 @@ const CarForm = ({
     <Box display="flex" flexDirection={{ xs: "column", sm: "row" }} gap={2}>
       <SelectInput
         options={typeData}
-        value={selectedOptions.type}
+        value={selectedOptions.used}
         label={t("forms.type")}
         placeholder={t("forms.selecttype")}
-        error={touched.type && Boolean(errors.type)}
-        helperText={touched.type && errors.type}
-        onChange={(e, newValue) => setFieldValue("type", newValue?.id || "")}
+        error={touched.used && Boolean(errors.used)}
+        helperText={touched.used && errors.used}
+        onChange={(e, newValue) => setFieldValue("used", newValue?.value || 0)}
         getOptionLabel={(option) => getTranslation2(option, "name")}
-        onBlur={() => setFieldTouched("type", true)}
+        onBlur={() => setFieldTouched("used", true)}
+      />
+
+      <SelectInput
+        options={dealOptions}
+        value={selectedOptions.deal}
+        label={t("forms.deals")}
+        placeholder={t("forms.selectdeals")}
+        error={touched.deal_id && Boolean(errors.deal_id)}
+        helperText={touched.deal_id && errors.deal_id}
+        onChange={(e, newValue) => setFieldValue("deal_id", newValue?.id || "")}
+        onInputChange={(e, newInputValue) => setSearchDeal(newInputValue)}
+        getOptionLabel={(option) => getTranslation2(option, "name")}
+        onBlur={() => setFieldTouched("deal_id", true)}
       />
     </Box>
   );

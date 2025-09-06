@@ -25,7 +25,6 @@ const SubscriptionForm = ({
     store_id: Yup.string().required().label(t("forms.showroom")),
     service_id: Yup.string().required().label(t("forms.package")),
     start_time: Yup.date().required().label(t("forms.startDate")),
-    count_days: Yup.number().required().label(t("forms.count_days")).min(1),
     price: Yup.number().required().label(t("forms.price")).min(0),
   });
 
@@ -155,20 +154,6 @@ const SubscriptionForm = ({
             gap={2}
             flexDirection={{ xs: "column", sm: "row" }}
           >
-            {/* Count Days */}
-            <TextInput
-              name="count_days"
-              label={t("forms.count_days")}
-              value={values.count_days}
-              onChange={(e) => setFieldValue("count_days", e.target.value)}
-              onBlur={() => setFieldTouched("count_days", true)}
-              error={touched.count_days && Boolean(errors.count_days)}
-              helperText={touched.count_days && errors.count_days}
-              type="number"
-              required
-              touched={touched.count_days}
-            />
-
             {/* Price */}
             <TextInput
               name="price"
@@ -182,15 +167,7 @@ const SubscriptionForm = ({
               required
               touched={touched.price}
             />
-          </Box>
 
-          <Box
-            display="flex"
-            gap={2}
-            flexDirection={{ xs: "column", sm: "row" }}
-            width={{ xs: "100%", sm: "48%" }}
-          >
-            {/* Start Time */}
             <DatePickerInput
               name="start_time"
               label={t("forms.startDate")}

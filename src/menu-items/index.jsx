@@ -9,6 +9,13 @@ import { BiSolidOffer } from "react-icons/bi";
 import { IoPeople } from "react-icons/io5";
 import { BiTask } from "react-icons/bi";
 import { GiCarSeat } from "react-icons/gi";
+import { BsFillFuelPumpFill } from "react-icons/bs";
+// import { GiCarWheel } from "react-icons/gi";
+import { GiGearStickPattern } from "react-icons/gi";
+import { PiHeadlightsBold } from "react-icons/pi";
+import { MdOutlineDirectionsCar } from "react-icons/md";
+import { FaStoreAlt } from "react-icons/fa";
+import { MdColorLens } from "react-icons/md";
 
 export const adminMenuItems = [
   {
@@ -93,9 +100,54 @@ export const adminMenuItems = [
           },
         ],
       },
+      {
+        id: "store-types",
+        title: "storeType",
+        path: "/admin/dashboard/showrooms/types",
+        icon: <FaStoreAlt size={25} />,
+        type: "item",
+        permission: "store_type.view",
+      },
     ],
   },
-
+  {
+    id: "car-parts-man",
+    title: "parts",
+    type: "group",
+    children: [
+      {
+        id: "car-parts-management",
+        type: "coollabse",
+        title: "cars_parts_man",
+        children: [
+          {
+            id: "parts",
+            title: "parts",
+            path: "/admin/dashboard/cars/parts",
+            icon: <IoLogoModelS size={25} />,
+            type: "item",
+            permission: "car_part.view",
+          },
+          {
+            id: "parts-create",
+            title: "parts_create",
+            path: "/admin/dashboard/cars/parts/create",
+            icon: <FaCirclePlus size={25} />,
+            type: "item",
+            permission: "car_part.create",
+          },
+        ],
+      },
+      {
+        id: "car-part-categories",
+        title: "parts_categories",
+        path: "/admin/dashboard/cars/parts/categories",
+        icon: <FaCirclePlus size={25} />,
+        type: "item",
+        permission: "car_part_categories.create",
+      },
+    ],
+  },
   {
     id: "car-man",
     title: "cars",
@@ -149,12 +201,67 @@ export const adminMenuItems = [
         ],
       },
       {
-        id: "feature",
-        title: "features",
-        type: "item",
-        path: "/admin/dashboard/cars/features",
-        icon: <GiCarSeat size={25} />,
-        permission: "feature.view",
+        id: "info-management",
+        type: "coollabse",
+        title: "car_info_man",
+        children: [
+          {
+            id: "fuel",
+            title: "fuel",
+            path: "/admin/dashboard/cars/fuels",
+            icon: <BsFillFuelPumpFill size={25} />,
+            type: "item",
+            permission: "fuel_type.create",
+          },
+          // {
+          //   id: "drive",
+          //   title: "drive",
+          //   path: "/admin/dashboard/cars/drives",
+          //   icon: <GiCarWheel size={25} />,
+          //   type: "item",
+          //   permission: "offers.create",
+          // },
+          {
+            id: "gear",
+            title: "gear",
+            path: "/admin/dashboard/cars/gears",
+            icon: <GiGearStickPattern size={25} />,
+            type: "item",
+            permission: "gear.create",
+          },
+          {
+            id: "color",
+            title: "color",
+            path: "/admin/dashboard/cars/colors",
+            icon: <MdColorLens size={25} />,
+            type: "item",
+            permission: "color.create",
+          },
+          {
+            id: "lights",
+            title: "lights",
+            path: "/admin/dashboard/cars/lights",
+            icon: <PiHeadlightsBold size={25} />,
+            type: "item",
+            permission: "light.create",
+          },
+          {
+            id: "structures",
+            title: "structures",
+            path: "/admin/dashboard/cars/structures",
+            icon: <MdOutlineDirectionsCar size={25} />,
+            type: "item",
+            permission: "structure.create",
+          },
+          {
+            id: "feature",
+            title: "features",
+            type: "item",
+            path: "/admin/dashboard/cars/features",
+            icon: <GiCarSeat size={25} />,
+            permission: "feature.view",
+          },
+        ],
       },
     ],
   },
@@ -285,7 +392,7 @@ export const adminMenuItems = [
         type: "item",
         icon: <FcPrivacy size={30} />,
         external: false,
-        permission: "privacy.view",
+        permission: "legal_document.view",
       },
       {
         id: "terms",
@@ -294,7 +401,7 @@ export const adminMenuItems = [
         type: "item",
         icon: <FcRules size={30} />,
         external: false,
-        permission: "terms.view",
+        permission: "legal_document.view",
       },
     ],
   },

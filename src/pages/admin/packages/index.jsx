@@ -49,8 +49,16 @@ const Packages = () => {
                 description: "",
                 description_ar: "",
                 category_service_id: null,
+                has_top_result: 0,
+                count_product: 1,
+                jj: 100000,
+                count_days: 30,
+                services: [],
               }}
               onSubmit={(values, { resetForm }) => {
+                if (values.category_service_id === 1) {
+                  values.count_product = values.jj;
+                }
                 createPackage.mutateAsync(values);
                 resetForm();
               }}

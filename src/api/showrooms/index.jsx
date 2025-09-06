@@ -3,7 +3,6 @@ import { request } from "../baseRequest";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import useGetTranslation from "../../utils/useGetTranslation";
 
 // Get
 export const useGetShowrooms = ({
@@ -13,21 +12,14 @@ export const useGetShowrooms = ({
   sort_by,
   sort_order,
 }) => {
-  const { i18n } = useTranslation();
-  const { getTranslation } = useGetTranslation();
-
   const getShowrooms = () => {
     const params = {
       page: page + 1,
       per_page: pageSize,
-      sort_by: getTranslation(sort_by) || "",
+      sort_by: sort_by || "",
       sort_order: sort_order || "",
+      name: name,
     };
-    if (i18n.language === "ar") {
-      params.name_ar = name;
-    } else {
-      params.name = name;
-    }
     return request({
       url: "/admin/stores",
       params,

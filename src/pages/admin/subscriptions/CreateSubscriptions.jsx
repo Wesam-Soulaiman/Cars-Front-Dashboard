@@ -18,7 +18,6 @@ const CreateSubscriptions = () => {
           service_id: null,
           store_id: null,
           price: "",
-          count_days: "",
           start_time: dayjs(),
           active: 1,
         }}

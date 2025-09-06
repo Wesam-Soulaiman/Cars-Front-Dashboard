@@ -13,10 +13,12 @@ export const useGetBrands = ({ page, pageSize, name = "" }) => {
       page: page + 1,
       per_page: pageSize,
     };
-    if (i18n.language === "ar") {
-      params.name_ar = name;
-    } else {
-      params.name = name;
+    if (name !== "") {
+      if (i18n.language === "ar") {
+        params.name_ar = name;
+      } else {
+        params.name = name;
+      }
     }
     return request({
       url: "/admin/brands",

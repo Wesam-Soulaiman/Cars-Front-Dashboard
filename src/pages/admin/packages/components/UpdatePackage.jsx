@@ -44,13 +44,21 @@ const UpdatePackage = ({ packages }) => {
                 name_ar: packages.name_ar,
                 description: packages.description,
                 description_ar: packages.description_ar,
-                category_service_id: packages.category_id,
+                category_service_id: packages.category_service_id,
+                has_top_result: packages.has_top_result ? 1 : 0,
+                count_product: packages.count_product,
+                jj: 100000,
+                count_days: packages.count_days,
+                services: packages.services,
               }}
               task="update"
               loadingButtonProps={{
                 loading: updatePackage.isPending,
               }}
               onSubmit={async (values) => {
+                if (values.category_service_id === 1) {
+                  values.count_product = values.jj;
+                }
                 await updatePackage.mutateAsync({
                   data: values,
                   id: packages.id,

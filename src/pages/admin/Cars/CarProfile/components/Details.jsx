@@ -39,7 +39,7 @@ const Details = ({ car }) => {
     {
       icon: <GiGasPump size={22} color={theme.palette.primary.main} />,
       label: t("carProfile.fuel_type"),
-      value: getDataLabel(fuelData, data.fuel_type),
+      value: getTranslation2(data.fuel_type, "name"),
     },
     {
       icon: <GiCarWheel size={22} color={theme.palette.primary.main} />,
@@ -49,7 +49,7 @@ const Details = ({ car }) => {
     {
       icon: <IoConstruct size={22} color={theme.palette.primary.main} />,
       label: t("carProfile.gears"),
-      value: getDataLabel(gearsTypesData, data.gears),
+      value: getTranslation2(data.gear, "name"),
     },
     {
       icon: <BsSpeedometer2 size={22} color={theme.palette.primary.main} />,
@@ -64,16 +64,17 @@ const Details = ({ car }) => {
     {
       icon: <IoColorPalette size={22} color={theme.palette.primary.main} />,
       label: t("carProfile.color"),
-      value: (
-        <Box
-          width={20}
-          height={20}
-          bgcolor={data.color}
-          borderRadius="50%"
-          border={`1px solid ${theme.palette.divider}`}
-          mr={1}
-        />
-      ),
+      value: getTranslation2(data.color, "name"),
+      // value: (
+      //   <Box
+      //     width={20}
+      //     height={20}
+      //     bgcolor={data.color}
+      //     borderRadius="50%"
+      //     border={`1px solid ${theme.palette.divider}`}
+      //     mr={1}
+      //   />
+      // ),
     },
   ];
 
@@ -148,7 +149,7 @@ const Details = ({ car }) => {
                 color: theme.palette.primary.contrastText,
               }}
             >
-              {data.brand_name?.charAt(0)?.toUpperCase() || "C"}
+              {data.brand.name?.charAt(0)?.toUpperCase() || "C"}
             </Avatar>
           )}
         </Box>
@@ -184,9 +185,9 @@ const Details = ({ car }) => {
                   sx={{ mx: "auto" }}
                 />
               ) : (
-                `${getTranslation2(data, "brand_name")} ${getTranslation2(
-                  data,
-                  "model_name"
+                `${getTranslation2(data.brand, "name")} ${getTranslation2(
+                  data.model,
+                  "name"
                 )} `
               )}
             </Typography>
@@ -232,7 +233,7 @@ const Details = ({ car }) => {
                     maxWidth: "600px",
                   }}
                 >
-                  {getTranslation2(data, "store_address")}
+                  {getTranslation2(data.store, "address")}
                 </Typography>
               )}
             </Stack>
@@ -262,7 +263,7 @@ const Details = ({ car }) => {
                     navigate(`/admin/dashboard/showrooms/${data.store_id}`)
                   }
                 >
-                  {getTranslation2(data, "store_name")}
+                  {getTranslation2(data.store, "name")}
                 </Typography>
               )}
             </Stack>

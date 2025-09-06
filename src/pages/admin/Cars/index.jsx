@@ -107,7 +107,7 @@ const Cars = () => {
                 <IconButton
                   color="info"
                   component={Link}
-                  to={`/admin/dashboard/showrooms/${row.original.store_id}`}
+                  to={`/admin/dashboard/showrooms/${row.original.store.id}`}
                 >
                   <CgProfile />
                 </IconButton>

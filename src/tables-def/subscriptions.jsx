@@ -76,14 +76,6 @@ export const SubscriptionsColumns = (packages = []) => {
       enableGlobalFilter: false,
     },
     {
-      accessorKey: "count_days",
-      header: t("table.count_days"),
-      maxSize: 150,
-      enableSorting: true,
-      enableColumnFilter: false,
-      enableGlobalFilter: false,
-    },
-    {
       accessorKey: "start_time",
       header: t("table.startDate"),
       maxSize: 150,

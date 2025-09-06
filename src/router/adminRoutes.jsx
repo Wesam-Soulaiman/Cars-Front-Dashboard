@@ -26,6 +26,15 @@ import CreateEmployee from "../pages/admin/employees/CreateEmployee";
 import Home from "../pages/admin/home";
 import Features from "../pages/admin/Features";
 import MyShowroomProfile from "../pages/admin/myProfile";
+import Fuels from "../pages/admin/Fuels";
+import Gears from "../pages/admin/Gears";
+import Colors from "../pages/admin/Colors";
+import Lights from "../pages/admin/Lights";
+import Structures from "../pages/admin/Structures";
+import StoreType from "../pages/admin/StoreType";
+import CarPartCategories from "../pages/admin/CarPartCategories";
+import CarParts from "../pages/admin/CarParts";
+import CreateCarParts from "../pages/admin/CarParts/CreateCarParts";
 
 export const adminRoutes = {
   path: "",
@@ -98,6 +107,10 @@ export const adminRoutes = {
                   element: <AllShowrooms />,
                 },
                 {
+                  path: "types",
+                  element: <StoreType />,
+                },
+                {
                   path: ":id",
                   element: <ShowroomProfile />,
                 },
@@ -162,6 +175,68 @@ export const adminRoutes = {
                     {
                       path: "create",
                       element: <CreateOffer />,
+                    },
+                  ],
+                },
+                {
+                  path: "parts",
+                  children: [
+                    {
+                      path: "",
+                      element: <CarParts />,
+                    },
+                    {
+                      path: "create",
+                      element: <CreateCarParts />,
+                    },
+                    {
+                      path: "categories",
+                      element: <CarPartCategories />,
+                    },
+                  ],
+                },
+                {
+                  path: "fuels",
+                  children: [
+                    {
+                      path: "",
+                      element: <Fuels />,
+                    },
+                  ],
+                },
+                {
+                  path: "gears",
+                  children: [
+                    {
+                      path: "",
+                      element: <Gears />,
+                    },
+                  ],
+                },
+                {
+                  path: "colors",
+                  children: [
+                    {
+                      path: "",
+                      element: <Colors />,
+                    },
+                  ],
+                },
+                {
+                  path: "lights",
+                  children: [
+                    {
+                      path: "",
+                      element: <Lights />,
+                    },
+                  ],
+                },
+                {
+                  path: "structures",
+                  children: [
+                    {
+                      path: "",
+                      element: <Structures />,
                     },
                   ],
                 },

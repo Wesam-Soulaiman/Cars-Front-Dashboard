@@ -3,13 +3,11 @@ import { useTranslation } from "react-i18next";
 import { ImCross } from "react-icons/im";
 import { FaCheck } from "react-icons/fa";
 import useGetLabel from "../utils/useGetLabel";
-import { fuelData } from "../data/fuelData";
 import { typeData } from "../data/typeData";
-import { gearsTypesData } from "../data/gearsTypesData";
 
 export const CarsTableColumns = (brands = [], models = []) => {
   const { getTranslation2 } = useGetTranslation();
-  const { getDataLabel } = useGetLabel();
+  const { getDataLabelByValue } = useGetLabel();
   const { t } = useTranslation();
 
   const col = [
@@ -55,7 +53,7 @@ export const CarsTableColumns = (brands = [], models = []) => {
       enableSorting: false,
       enableGlobalFilter: false,
       Cell: ({ row }) => {
-        return <span>{getDataLabel(fuelData, row.original.type)}</span>;
+        return <span>{getTranslation2(row.original.fuel_type, "name")}</span>;
       },
     },
     {
@@ -64,7 +62,7 @@ export const CarsTableColumns = (brands = [], models = []) => {
       enableSorting: false,
       enableGlobalFilter: false,
       Cell: ({ row }) => {
-        return <span>{getDataLabel(gearsTypesData, row.original.gears)}</span>;
+        return <span>{getTranslation2(row.original.gear, "name")}</span>;
       },
     },
     {
@@ -75,8 +73,8 @@ export const CarsTableColumns = (brands = [], models = []) => {
       maxSize: 50,
     },
     {
-      accessorKey: "year_of_registration",
-      header: t("table.year_of_registration"),
+      accessorKey: "register_year",
+      header: t("table.register_year"),
       enableSorting: true,
       enableGlobalFilter: false,
       maxSize: 50,
@@ -89,13 +87,13 @@ export const CarsTableColumns = (brands = [], models = []) => {
       maxSize: 50,
     },
     {
-      accessorKey: "type",
+      accessorKey: "used",
       header: t("table.status"),
       enableSorting: false,
       enableGlobalFilter: false,
       maxSize: 50,
       Cell: ({ row }) => {
-        return <span>{getDataLabel(typeData, row.original.type)}</span>;
+        return <span>{getDataLabelByValue(typeData, row.original.used)}</span>;
       },
     },
     {

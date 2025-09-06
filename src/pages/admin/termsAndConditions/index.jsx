@@ -19,11 +19,16 @@ import "draft-js/dist/Draft.css";
 import { useEffect, useState } from "react";
 import { VscListOrdered } from "react-icons/vsc";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import { useGetTerms, useUpdateTerms } from "../../../api/terms";
+import {
+  useListLegalDocuments,
+  useCreateLegalDocument,
+  useUpdateLegalDocument,
+} from "../../../api/privacy"; // ✅ reuse same hooks & apis
 import LoadingDataError from "../../../components/LoadingDataError";
 import { stateToHTML } from "draft-js-export-html";
 import { useTranslation } from "react-i18next";
-import useGetDarkValue from "./../../../utils/useGetDarkValue";
+import useGetDarkValue from "../../../utils/useGetDarkValue";
+import { request } from "../../../api/baseRequest";
 
 const TextEditorButton = styled(IconButton)(({ theme }) => ({
   borderRadius: "6px",
@@ -32,7 +37,7 @@ const TextEditorButton = styled(IconButton)(({ theme }) => ({
   minWidth: "30px",
 }));
 
-const TermsAndConditions = () => {
+const Terms = () => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -43,8 +48,9 @@ const TermsAndConditions = () => {
   const { t, i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
 
-  const terms = useGetTerms();
-  const updateTerms = useUpdateTerms();
+  const { data, isLoading, isError, refetch } = useListLegalDocuments();
+  const createDoc = useCreateLegalDocument();
+  const updateDoc = useUpdateLegalDocument();
   const { getVlaue } = useGetDarkValue();
 
   const handleKeyCommand = (command) => {
@@ -73,44 +79,98 @@ const TermsAndConditions = () => {
       : setEditorState(RichUtils.toggleBlockType(editorState, blockType));
   };
 
-  const handleSave = () => {
-    const htmlContentAR = stateToHTML(editorStateAR.getCurrentContent());
+  const handleSave = async () => {
     const htmlContentEN = stateToHTML(editorState.getCurrentContent());
+    const htmlContentAR = stateToHTML(editorStateAR.getCurrentContent());
 
-    updateTerms.mutate({
-      content_ar: htmlContentAR,
-      content: htmlContentEN,
-    });
+    const existingEn = data?.data?.data.find(
+      (d) => d.type === "terms_conditions" && d.language === "en"
+    );
+    const existingAr = data?.data?.data.find(
+      (d) => d.type === "terms_conditions" && d.language === "ar"
+    );
+
+    if (existingEn) {
+      const newVersion = (parseInt(existingEn.version, 10) || 1) + 1;
+      await updateDoc.mutateAsync({
+        id: existingEn.id,
+        params: {
+          type: "terms_conditions",
+          language: "en",
+          content: htmlContentEN,
+          version: newVersion.toString(),
+        },
+      });
+    } else {
+      await createDoc.mutateAsync({
+        type: "terms_conditions",
+        language: "en",
+        content: htmlContentEN,
+        version: "1",
+      });
+    }
+
+    if (existingAr) {
+      const newVersion = (parseInt(existingAr.version, 10) || 1) + 1;
+      await updateDoc.mutateAsync({
+        id: existingAr.id,
+        params: {
+          type: "terms_conditions",
+          language: "ar",
+          content: htmlContentAR,
+          version: newVersion.toString(),
+        },
+      });
+    } else {
+      await createDoc.mutateAsync({
+        type: "terms_conditions",
+        language: "ar",
+        content: htmlContentAR,
+        version: "1",
+      });
+    }
   };
 
+  // Populate editors with existing content
   useEffect(() => {
-    if (!terms.isLoading && !terms.isError && terms.data?.data) {
-      const html = terms.data.data.content;
-      const htmlAr = terms.data.data.content_ar;
-
-      const blocksFromHTML = convertFromHTML(html);
-      const blocksFromHTML_AR = convertFromHTML(htmlAr);
-
-      const contentState = ContentState.createFromBlockArray(
-        blocksFromHTML.contentBlocks,
-        blocksFromHTML.entityMap
+    if (!isLoading && !isError && data?.data) {
+      const existingEn = data.data.data.find(
+        (d) => d.type === "terms_conditions" && d.language === "en"
       );
-      const contentStateAr = ContentState.createFromBlockArray(
-        blocksFromHTML_AR.contentBlocks,
-        blocksFromHTML_AR.entityMap
+      const existingAr = data.data.data.find(
+        (d) => d.type === "terms_conditions" && d.language === "ar"
       );
 
-      setEditorState(EditorState.createWithContent(contentState));
-      setEditorStateAR(EditorState.createWithContent(contentStateAr));
+      if (existingEn?.url) {
+        request(existingEn.url).then((res) => {
+          const blocksFromHTML = convertFromHTML(res.data);
+          const contentState = ContentState.createFromBlockArray(
+            blocksFromHTML.contentBlocks,
+            blocksFromHTML.entityMap
+          );
+          setEditorState(EditorState.createWithContent(contentState));
+        });
+      }
+
+      if (existingAr?.url) {
+        request(existingAr.url).then((res) => {
+          const blocksFromHTML_AR = convertFromHTML(res.data);
+          const contentStateAr = ContentState.createFromBlockArray(
+            blocksFromHTML_AR.contentBlocks,
+            blocksFromHTML_AR.entityMap
+          );
+          setEditorStateAR(EditorState.createWithContent(contentStateAr));
+        });
+      }
     }
-  }, [terms.isLoading, terms.isError, terms.data]);
+  }, [isLoading, isError, data]);
 
-  if (terms.isLoading) {
+  if (isLoading) {
     return <Typography>{t("global.loading")} ...</Typography>;
   }
 
-  if (terms.isError) {
-    return <LoadingDataError refetch={terms.refetch} />;
+  if (isError) {
+    return <LoadingDataError refetch={refetch} />;
   }
 
   return (
@@ -118,7 +178,7 @@ const TermsAndConditions = () => {
       <Button
         sx={{ mb: 2 }}
         variant="contained"
-        loading={updateTerms.isPending}
+        loading={createDoc.isPending || updateDoc.isPending}
         onClick={handleSave}
       >
         {t("gbtn.save")}
@@ -139,18 +199,9 @@ const TermsAndConditions = () => {
         }}
       >
         <Box>
-          <Stack
-            direction="row"
-            gap={1}
-            alignItems="flex-start"
-            flexWrap="nowrap"
-          >
-            <Stack
-              gap={0.5}
-              direction="column"
-              sx={{ p: 1, borderRadius: "8px" }}
-            >
-              <Stack direction="row" gap={0.5}>
+          <Stack flexDirection="row" gap={1} alignItems="flex-start">
+            <Stack gap={0.5} flexDirection="column" sx={{ p: 1 }}>
+              <Stack flexDirection="row" gap={0.5}>
                 <TextEditorButton onClick={() => toggleInlineStyle("BOLD")}>
                   B
                 </TextEditorButton>
@@ -158,7 +209,7 @@ const TermsAndConditions = () => {
                   I
                 </TextEditorButton>
               </Stack>
-              <Stack direction="row" gap={0.5}>
+              <Stack flexDirection="row" gap={0.5}>
                 <TextEditorButton
                   onClick={() => toggleBlockType("ordered-list-item")}
                 >
@@ -171,13 +222,8 @@ const TermsAndConditions = () => {
                 </TextEditorButton>
               </Stack>
             </Stack>
-
-            <Stack
-              gap={0.5}
-              direction="column"
-              sx={{ p: 1, borderRadius: "8px" }}
-            >
-              <Stack gap={0.5} direction="row">
+            <Stack gap={0.5} flexDirection="column" sx={{ p: 1 }}>
+              <Stack gap={0.5} flexDirection="row">
                 <TextEditorButton onClick={() => toggleBlockType("header-one")}>
                   h1
                 </TextEditorButton>
@@ -190,7 +236,7 @@ const TermsAndConditions = () => {
                   h3
                 </TextEditorButton>
               </Stack>
-              <Stack gap={0.5} direction="row">
+              <Stack gap={0.5} flexDirection="row">
                 <TextEditorButton
                   onClick={() => toggleBlockType("header-four")}
                 >
@@ -208,17 +254,14 @@ const TermsAndConditions = () => {
             </Stack>
           </Stack>
         </Box>
-
         <Box
           sx={{
             p: 1,
             backgroundColor: getVlaue("grey.900", "grey.100"),
-            "& .DraftEditor-root": {
-              minHeight: "400px",
-            },
+            "& .DraftEditor-root": { minHeight: "400px" },
           }}
         >
-          <Stack direction="row" justifyContent="center" gap={1} mb={2}>
+          <Stack flexDirection="row" justifyContent="center" gap={1} mb={2}>
             <Button
               variant={selectedLanguage === "ar" ? "contained" : "outlined"}
               onClick={() => setSelectedLanguage("ar")}
@@ -248,4 +291,4 @@ const TermsAndConditions = () => {
   );
 };
 
-export default TermsAndConditions;
+export default Terms;
