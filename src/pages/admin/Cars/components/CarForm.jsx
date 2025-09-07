@@ -49,6 +49,7 @@ const CarForm = ({
   const validationSchema = Yup.object().shape({
     brand_id: Yup.string().required().label(t("forms.brand")),
     model_id: Yup.string().required().label(t("forms.model")),
+    hex: Yup.string().required().label(t("forms.hex")),
     structure_id: Yup.string().required().label(t("forms.structure")),
     store_id: Yup.string().default(1).label(t("forms.showroom")),
     deal_id: Yup.string().default(1).label(t("forms.deal")),
@@ -865,7 +866,6 @@ const CarForm = ({
         fullWidth
         variant="contained"
         type="submit"
-        disabled={!isValid}
         sx={{
           width: { xs: "100%", sm: "fit-content" },
           mt: 3,
