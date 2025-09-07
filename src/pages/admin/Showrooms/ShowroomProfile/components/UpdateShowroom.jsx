@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 const UpdateShowroom = ({ showroom }) => {
   const updateShowroom = useUpdateShowroom();
   const { t } = useTranslation();
+  const storeData = showroom.data?.data.data;
 
   return (
     <Grid size={12}>
@@ -21,7 +22,18 @@ const UpdateShowroom = ({ showroom }) => {
       </TitleTypography>
       {!showroom.isLoading && !showroom.isError && (
         <ShowroomForm
-          initialValues={showroom.data?.data.data}
+          initialValues={{
+            address: storeData.address || "",
+            address_ar: storeData.address_ar || "",
+            email: storeData.email || "",
+            governorate_id: storeData.governorate.id || 1,
+            store_type_id: storeData.store_type.id || 1,
+            name: storeData.name || "",
+            name_ar: storeData.name_ar || "",
+            phone: storeData.phone || "",
+            whatsapp_phone: storeData.whatsapp_phone || "",
+            photo: storeData.photo || null,
+          }}
           task="update"
           onSubmit={(values) => {
             const formData = new FormData();

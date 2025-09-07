@@ -287,7 +287,7 @@ const ShowroomForm = ({
         }
         loading={isLoading}
         onChange={(e, newValue) => {
-          setFieldValue("governorate_id", newValue ? newValue.id : "");
+          setFieldValue("governorate_id", newValue.id);
         }}
         onBlur={() => setFieldTouched("governorate_id", true)}
         getOptionLabel={(option) => getTranslation2(option, "name")}
