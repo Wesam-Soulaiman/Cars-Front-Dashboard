@@ -1,40 +1,75 @@
+import Loadable from "../components/Loadable";
+import { lazy } from "react";
+
 import RootLayout from "../layouts/RootLayout/RootLayout";
 import AdminLayout from "../layouts/AdminLayout/AdminLayout";
-import Brands from "../pages/admin/Brands";
-import BrandsModels from "../pages/admin/BrandsModels";
-import AllShowrooms from "../pages/admin/Showrooms";
-import CreateShowroom from "../pages/admin/Showrooms/CreateShowroom";
-import Cars from "../pages/admin/Cars";
-import CreateBrand from "../pages/admin/Brands/CreateBrand";
-import CreateModel from "../pages/admin/BrandsModels/CreateModel";
-import Privacy from "../pages/admin/privacy";
-import TermsAndConditions from "../pages/admin/termsAndConditions";
-import FAQs from "../pages/admin/faq/FAQs";
-import Packages from "../pages/admin/packages";
-import Banners from "./../pages/admin/banner/index";
-import Subscriptions from "../pages/admin/subscriptions";
-import ShowroomProfile from "../pages/admin/Showrooms/ShowroomProfile";
-import CarProfile from "../pages/admin/Cars/CarProfile";
-import CreateCar from "../pages/admin/Cars/CreateCar";
-import Offers from "../pages/admin/Offers";
-import CreateOffer from "../pages/admin/Offers/CreateOffer";
-import CreateSubscriptions from "../pages/admin/subscriptions/CreateSubscriptions";
-import Roles from "../pages/admin/roles";
-import RolePermissionsManager from "../pages/admin/roles/Permissions";
-import AllEmployees from "../pages/admin/employees";
-import CreateEmployee from "../pages/admin/employees/CreateEmployee";
 import Home from "../pages/admin/home";
-import Features from "../pages/admin/Features";
-import MyShowroomProfile from "../pages/admin/myProfile";
-import Fuels from "../pages/admin/Fuels";
-import Gears from "../pages/admin/Gears";
-import Colors from "../pages/admin/Colors";
-import Lights from "../pages/admin/Lights";
-import Structures from "../pages/admin/Structures";
-import StoreType from "../pages/admin/StoreType";
-import CarPartCategories from "../pages/admin/CarPartCategories";
-import CarParts from "../pages/admin/CarParts";
-import CreateCarParts from "../pages/admin/CarParts/CreateCarParts";
+
+// Admin Pages
+const Brands = Loadable(lazy(() => import("../pages/admin/Brands")));
+const BrandsModels = Loadable(
+  lazy(() => import("../pages/admin/BrandsModels"))
+);
+const AllShowrooms = Loadable(lazy(() => import("../pages/admin/Showrooms")));
+const CreateShowroom = Loadable(
+  lazy(() => import("../pages/admin/Showrooms/CreateShowroom"))
+);
+const Cars = Loadable(lazy(() => import("../pages/admin/Cars")));
+const CreateBrand = Loadable(
+  lazy(() => import("../pages/admin/Brands/CreateBrand"))
+);
+const CreateModel = Loadable(
+  lazy(() => import("../pages/admin/BrandsModels/CreateModel"))
+);
+const Privacy = Loadable(lazy(() => import("../pages/admin/privacy")));
+const TermsAndConditions = Loadable(
+  lazy(() => import("../pages/admin/termsAndConditions"))
+);
+const FAQs = Loadable(lazy(() => import("../pages/admin/faq/FAQs")));
+const Packages = Loadable(lazy(() => import("../pages/admin/packages")));
+const Banners = Loadable(lazy(() => import("../pages/admin/banner/index")));
+const Subscriptions = Loadable(
+  lazy(() => import("../pages/admin/subscriptions"))
+);
+const ShowroomProfile = Loadable(
+  lazy(() => import("../pages/admin/Showrooms/ShowroomProfile"))
+);
+const CarProfile = Loadable(
+  lazy(() => import("../pages/admin/Cars/CarProfile"))
+);
+const CreateCar = Loadable(lazy(() => import("../pages/admin/Cars/CreateCar")));
+const Offers = Loadable(lazy(() => import("../pages/admin/Offers")));
+const CreateOffer = Loadable(
+  lazy(() => import("../pages/admin/Offers/CreateOffer"))
+);
+const CreateSubscriptions = Loadable(
+  lazy(() => import("../pages/admin/subscriptions/CreateSubscriptions"))
+);
+const Roles = Loadable(lazy(() => import("../pages/admin/roles")));
+const RolePermissionsManager = Loadable(
+  lazy(() => import("../pages/admin/roles/Permissions"))
+);
+const AllEmployees = Loadable(lazy(() => import("../pages/admin/employees")));
+const CreateEmployee = Loadable(
+  lazy(() => import("../pages/admin/employees/CreateEmployee"))
+);
+const Features = Loadable(lazy(() => import("../pages/admin/Features")));
+const MyShowroomProfile = Loadable(
+  lazy(() => import("../pages/admin/myProfile"))
+);
+const Fuels = Loadable(lazy(() => import("../pages/admin/Fuels")));
+const Gears = Loadable(lazy(() => import("../pages/admin/Gears")));
+const Colors = Loadable(lazy(() => import("../pages/admin/Colors")));
+const Lights = Loadable(lazy(() => import("../pages/admin/Lights")));
+const Structures = Loadable(lazy(() => import("../pages/admin/Structures")));
+const StoreType = Loadable(lazy(() => import("../pages/admin/StoreType")));
+const CarPartCategories = Loadable(
+  lazy(() => import("../pages/admin/CarPartCategories"))
+);
+const CarParts = Loadable(lazy(() => import("../pages/admin/CarParts")));
+const CreateCarParts = Loadable(
+  lazy(() => import("../pages/admin/CarParts/CreateCarParts"))
+);
 
 export const adminRoutes = {
   path: "",
@@ -50,223 +85,83 @@ export const adminRoutes = {
             {
               path: "brands",
               children: [
-                {
-                  path: "",
-                  element: <Brands />,
-                },
-                {
-                  path: "create",
-                  element: <CreateBrand />,
-                },
+                { path: "", element: <Brands /> },
+                { path: "create", element: <CreateBrand /> },
               ],
             },
             {
               path: "models",
               children: [
-                {
-                  path: "",
-                  element: <BrandsModels />,
-                },
-                {
-                  path: "create",
-                  element: <CreateModel />,
-                },
+                { path: "", element: <BrandsModels /> },
+                { path: "create", element: <CreateModel /> },
               ],
             },
             {
               path: "roles",
               children: [
-                {
-                  path: "",
-                  element: <Roles />,
-                },
-                {
-                  path: ":id",
-                  element: <RolePermissionsManager />,
-                },
+                { path: "", element: <Roles /> },
+                { path: ":id", element: <RolePermissionsManager /> },
               ],
             },
             {
               path: "employees",
               children: [
-                {
-                  path: "",
-                  element: <AllEmployees />,
-                },
-                {
-                  path: "create",
-                  element: <CreateEmployee />,
-                },
+                { path: "", element: <AllEmployees /> },
+                { path: "create", element: <CreateEmployee /> },
               ],
             },
             {
               path: "showrooms",
               children: [
-                {
-                  path: "",
-                  element: <AllShowrooms />,
-                },
-                {
-                  path: "types",
-                  element: <StoreType />,
-                },
-                {
-                  path: ":id",
-                  element: <ShowroomProfile />,
-                },
-                {
-                  path: "create",
-                  element: <CreateShowroom />,
-                },
+                { path: "", element: <AllShowrooms /> },
+                { path: "types", element: <StoreType /> },
+                { path: ":id", element: <ShowroomProfile /> },
+                { path: "create", element: <CreateShowroom /> },
               ],
             },
-            {
-              path: "packages",
-              children: [
-                {
-                  path: "",
-                  element: <Packages />,
-                },
-              ],
-            },
+            { path: "packages", element: <Packages /> },
             {
               path: "subscriptions",
               children: [
-                {
-                  path: "",
-                  element: <Subscriptions />,
-                },
-                {
-                  path: "create",
-                  element: <CreateSubscriptions />,
-                },
+                { path: "", element: <Subscriptions /> },
+                { path: "create", element: <CreateSubscriptions /> },
               ],
             },
-            {
-              path: "faqs",
-              element: <FAQs />,
-            },
-            {
-              path: "banners",
-              element: <Banners />,
-            },
+            { path: "faqs", element: <FAQs /> },
+            { path: "banners", element: <Banners /> },
             {
               path: "cars",
               children: [
-                {
-                  path: "",
-                  element: <Cars />,
-                },
-                {
-                  path: ":id",
-                  element: <CarProfile />,
-                },
-                {
-                  path: "create",
-                  element: <CreateCar />,
-                },
+                { path: "", element: <Cars /> },
+                { path: ":id", element: <CarProfile /> },
+                { path: "create", element: <CreateCar /> },
                 {
                   path: "offers",
                   children: [
-                    {
-                      path: "",
-                      element: <Offers />,
-                    },
-                    {
-                      path: "create",
-                      element: <CreateOffer />,
-                    },
+                    { path: "", element: <Offers /> },
+                    { path: "create", element: <CreateOffer /> },
                   ],
                 },
                 {
                   path: "parts",
                   children: [
-                    {
-                      path: "",
-                      element: <CarParts />,
-                    },
-                    {
-                      path: "create",
-                      element: <CreateCarParts />,
-                    },
-                    {
-                      path: "categories",
-                      element: <CarPartCategories />,
-                    },
+                    { path: "", element: <CarParts /> },
+                    { path: "create", element: <CreateCarParts /> },
+                    { path: "categories", element: <CarPartCategories /> },
                   ],
                 },
-                {
-                  path: "fuels",
-                  children: [
-                    {
-                      path: "",
-                      element: <Fuels />,
-                    },
-                  ],
-                },
-                {
-                  path: "gears",
-                  children: [
-                    {
-                      path: "",
-                      element: <Gears />,
-                    },
-                  ],
-                },
-                {
-                  path: "colors",
-                  children: [
-                    {
-                      path: "",
-                      element: <Colors />,
-                    },
-                  ],
-                },
-                {
-                  path: "lights",
-                  children: [
-                    {
-                      path: "",
-                      element: <Lights />,
-                    },
-                  ],
-                },
-                {
-                  path: "structures",
-                  children: [
-                    {
-                      path: "",
-                      element: <Structures />,
-                    },
-                  ],
-                },
-                {
-                  path: "features",
-                  children: [
-                    {
-                      path: "",
-                      element: <Features />,
-                    },
-                  ],
-                },
+                { path: "fuels", element: <Fuels /> },
+                { path: "gears", element: <Gears /> },
+                { path: "colors", element: <Colors /> },
+                { path: "lights", element: <Lights /> },
+                { path: "structures", element: <Structures /> },
+                { path: "features", element: <Features /> },
               ],
             },
-            {
-              path: "",
-              element: <Home />,
-            },
-            {
-              path: "my-profile",
-              element: <MyShowroomProfile />,
-            },
-            {
-              path: "privacy",
-              element: <Privacy />,
-            },
-            {
-              path: "terms-and-conditions",
-              element: <TermsAndConditions />,
-            },
+            { path: "", element: <Home /> },
+            { path: "my-profile", element: <MyShowroomProfile /> },
+            { path: "privacy", element: <Privacy /> },
+            { path: "terms-and-conditions", element: <TermsAndConditions /> },
           ],
         },
       ],

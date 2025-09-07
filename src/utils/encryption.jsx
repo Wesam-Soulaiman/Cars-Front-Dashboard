@@ -1,7 +1,7 @@
 import CryptoJS from "crypto-js";
 
 const APP_KEY =
-  process.env.REACT_APP_ENCRYPTION_KEY || "super-secure-32-byte-key";
+  import.meta.env.REACT_APP_ENCRYPTION_KEY || "super-secure-32-byte-key";
 
 export const Encrypt = (text) => {
   try {
