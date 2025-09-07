@@ -216,14 +216,12 @@ const CarForm = ({
     pageSize,
     name: debouncedSearchModel,
   });
+  const showrooms = useGetShowrooms({
+    page,
+    pageSize,
+    name: debouncedSearchShowroom,
+  });
 
-  if (user.type === "employee") {
-    const showrooms = useGetShowrooms({
-      page,
-      pageSize,
-      name: debouncedSearchShowroom,
-    });
-  }
   const colors = useGetColors({
     page,
     pageSize,
