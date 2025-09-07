@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Decrypt } from "../utils/encryption";
 
-const baseURL = "http://127.0.0.1:8000/api";
+const baseURL = "https://car-api.houseofgeniuses.tech/api";
 
 const client = axios.create({ baseURL });
 
