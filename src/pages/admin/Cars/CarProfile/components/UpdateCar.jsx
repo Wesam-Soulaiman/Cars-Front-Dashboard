@@ -31,6 +31,7 @@ const UpdateCar = ({ car }) => {
             store_id: car?.data?.data?.data?.store.id || 1,
             price: car?.data?.data?.data?.price || 0,
             mileage: car?.data?.data?.data?.mileage || 0,
+            hex: car?.data?.data?.data?.hex || "",
             year_of_construction:
               car?.data?.data?.data?.year_of_construction ||
               new Date().getFullYear(),

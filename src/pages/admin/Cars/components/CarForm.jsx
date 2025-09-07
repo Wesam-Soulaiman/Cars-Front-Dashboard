@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useGetBrands } from "../../../../api/brands";
 import { useGetModels } from "./../../../../api/models/index";
@@ -34,6 +34,7 @@ import { useGetGears } from "../../../../api/gears";
 import { useGetLights } from "../../../../api/lights";
 import { useGetDeals } from "../../../../api/deals";
 import { useGetStructures } from "../../../../api/structures";
+import { useAuthContext } from "../../../../providers/AuthProvider";
 
 const CarForm = ({
   task = "create",
@@ -83,6 +84,8 @@ const CarForm = ({
     main_photo: Yup.mixed().required().label(t("forms.main_photo")),
     photos: Yup.array().of(Yup.mixed()).label(t("forms.photos")),
   });
+
+  const { user } = useAuthContext();
 
   const {
     values,
@@ -213,11 +216,13 @@ const CarForm = ({
     name: debouncedSearchModel,
   });
 
-  const showrooms = useGetShowrooms({
-    page,
-    pageSize,
-    name: debouncedSearchShowroom,
-  });
+  if (user.type === "employee") {
+    const showrooms = useGetShowrooms({
+      page,
+      pageSize,
+      name: debouncedSearchShowroom,
+    });
+  }
   const colors = useGetColors({
     page,
     pageSize,
@@ -612,9 +617,9 @@ const CarForm = ({
 
       <ColorPickerField
         label={t("forms.color")}
-        value={values.color}
-        onChange={(color) => setFieldValue("color", color)}
-        onBlur={() => setFieldTouched("color", true)}
+        value={values.hex}
+        onChange={(color) => setFieldValue("hex", color)}
+        onBlur={() => setFieldTouched("hex", true)}
       />
     </Box>
   );

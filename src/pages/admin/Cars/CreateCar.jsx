@@ -20,6 +20,7 @@ const CreateCar = () => {
           structure_id: null,
           deal_id: null,
           store_id: null,
+          hex: "",
           price: "",
           mileage: "",
           year_of_construction: "",
